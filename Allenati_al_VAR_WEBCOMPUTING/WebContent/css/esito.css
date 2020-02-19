@@ -17,3 +17,8 @@ body {
 	font-size: 22px;
 	font-weight: 900;
 }
+
+#punteggio{
+	margin-top:10%;
+	font-size: 32px;
+}

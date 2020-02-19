@@ -25,9 +25,24 @@
 	<div class="container" id="risposte">
 	
 		<h1 style="text-align: center;" ><span class="badge badge-dark">ESITO PROVA AUTOVALUTAZIONE</span></h1>
-
-		<ul class="list-group">
 		
+		<c:if test="${punteggio != null}">
+			<div class="row">
+				<div align="center" class="column col-sm-5"></div>
+				
+				<div align="center" class="column col-sm-1">
+					<img id="img_referee" src="../img/icona_bersaglio.png">
+				</div>	
+						
+				<div align="center" class="column col-sm-1">
+					<p id="punteggio" >${punteggio}</p>
+				</div>	
+		
+				<div align="center" class="column col-sm-5"></div>	
+			</div>
+		</c:if>
+		<ul class="list-group">
+			
 			<c:forEach items="${esito}" var="v">
 				
 				<c:if test="${v.risposte.rispostaUtente==true}">
@@ -50,9 +65,8 @@
 						<p>${v.risposte.opzioneCorretta}</p>
 					</div>	
 				</div>
-				
 			</c:forEach>
-		</ul>
+		</ul>	
 	</div>
 	
 </body>

@@ -88,6 +88,7 @@ public class GestoreProvaAutovalutazione extends HttpServlet {
 				
 				rd = req.getRequestDispatcher("esito.jsp");
 				req.getSession().setAttribute("esito", lista_video_con_risposta_utente);
+				req.setAttribute("punteggio", punteggio);
 			}
 		}
 		else if (req.getParameter("editata") != null && req.getParameter("editata").equals("true")) {
@@ -121,12 +122,14 @@ public class GestoreProvaAutovalutazione extends HttpServlet {
 				DBManager.getInstance().aggiungiAlloStorico(esito);
 				rd = req.getRequestDispatcher("esito.jsp");
 				req.getSession().setAttribute("esito", lista_video_con_risposta_utente);
+				req.setAttribute("punteggio", punteggio);
 			}
 
 		}
 		req.getSession().setAttribute("ordineRisposte", new Random().nextInt(2));
 		req.getSession().setAttribute("indice", lista_video_con_risposta_utente.size()+1);
 		rd.forward(req, resp);
+		
 	}
 	
 	@Override

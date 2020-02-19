@@ -31,8 +31,6 @@ public class GestorePagine extends HttpServlet {
 			}
 			else if(pagina.contentEquals("storico")) {
 				req.getSession().setAttribute("storico",DBManager.getInstance().getStorico());
-				rd = req.getRequestDispatcher(pagina+".jsp");
-				rd.forward(req, resp);
 			}
 			else if(pagina.contentEquals("registrati")){
 				req.getSession().removeAttribute("nome");
