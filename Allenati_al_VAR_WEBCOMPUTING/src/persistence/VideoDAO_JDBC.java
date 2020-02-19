@@ -10,11 +10,13 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.sun.tools.javac.util.Pair;
+
+
 
 import model.Categoria;
 import model.Commenti;
 import model.OpzioniRisposte;
+import model.Pair;
 import model.Video;
 
 
@@ -338,26 +340,26 @@ public class VideoDAO_JDBC implements VideoDAO{
 			Video video = null;
 			
 			int contFiltri = 2;
-			ArrayList<Pair<String, String>> filtri = new ArrayList<Pair<String,String>>();
+			ArrayList<Pair> filtri = new ArrayList<Pair>();
 			String query_ricerca_per_filtri;
 			
 			
 			if(piuGiusti.equals("true")) {
 				query_ricerca_per_filtri = "SELECT COUNT(valore_risposta) AS numero_risposte_giuste, COUNT(commento) AS numero_commenti, v.url AS fk_video_risposte, v.nome FROM risposte_utente r LEFT OUTER JOIN video v ON v.url=r.fk_video LEFT OUTER JOIN commenti c ON v.url=c.fk_video WHERE durata BETWEEN ? AND ? ";
 				if(cercaIn.equals("prove_di_autovalutazione")) {
-					filtri.add(new Pair<String,String>("AND risposta_utente=?","true"));
+					filtri.add(new Pair("AND risposta_utente=?","true"));
 				}
 				else
-					filtri.add(new Pair<String,String>("AND valore_risposta=?","true"));
+					filtri.add(new Pair("AND valore_risposta=?","true"));
 				
 			}
 			else if(piuSbagliati.equals("true")) {
 				query_ricerca_per_filtri = "SELECT COUNT(valore_risposta) AS numero_risposte_giuste, COUNT(commento) AS numero_commenti, v.url AS fk_video_risposte, v.nome FROM risposte_utente r LEFT OUTER JOIN video v ON v.url=r.fk_video LEFT OUTER JOIN commenti c ON v.url=c.fk_video WHERE durata BETWEEN ? AND ? ";
 				if(cercaIn.equals("prove_di_autovalutazione")) {
-					filtri.add(new Pair<String,String>("AND risposta_utente=?","false"));
+					filtri.add(new Pair("AND risposta_utente=?","false"));
 				}
 				else
-					filtri.add(new Pair<String,String>("AND valore_risposta=?","false"));
+					filtri.add(new Pair("AND valore_risposta=?","false"));
 				
 			}
 			else if(cercaIn.equals("risposte_utente")) {
@@ -377,58 +379,58 @@ public class VideoDAO_JDBC implements VideoDAO{
 			}
 			
 			if(cercaIn.equals("risposte_utente")) {
-				filtri.add(new Pair<String,String>("AND r.fk_utente=?",DBManager.getInstance().getUtenteCorrente().getEmail()));		
+				filtri.add(new Pair("AND r.fk_utente=?",DBManager.getInstance().getUtenteCorrente().getEmail()));		
 			}
 			else if(cercaIn.equals("preferiti")) {
-				filtri.add(new Pair<String,String>("AND p.fk_utente=?",DBManager.getInstance().getUtenteCorrente().getEmail()));		
+				filtri.add(new Pair("AND p.fk_utente=?",DBManager.getInstance().getUtenteCorrente().getEmail()));		
 			}
 			else if(cercaIn.equals("prove_di_autovalutazione")) {
-				filtri.add(new Pair<String,String>("AND e.fk_utente=?",DBManager.getInstance().getUtenteCorrente().getEmail()));		
+				filtri.add(new Pair("AND e.fk_utente=?",DBManager.getInstance().getUtenteCorrente().getEmail()));		
 			}
 			
 			if(!categoria.equals("")) {
-				filtri.add(new Pair<String,String>("AND categoria = ?",categoria));
+				filtri.add(new Pair("AND categoria = ?",categoria));
 			}
 			
 			if(!periodo.equals("")) {
-				filtri.add(new Pair<String,String>(" AND v.data BETWEEN ? AND ?",periodo));
-				filtri.add(new Pair<String,String>("",new Date().toInstant().toString()));
+				filtri.add(new Pair(" AND v.data BETWEEN ? AND ?",periodo));
+				filtri.add(new Pair("",new Date().toInstant().toString()));
 			}
 			
 			if(!difficolta.equals("")) {
-				filtri.add(new Pair<String,String>(" AND difficolta = ?",difficolta));
+				filtri.add(new Pair(" AND difficolta = ?",difficolta));
 			}
 			
 			if(!squadraA.equals("")) {
-				filtri.add(new Pair<String,String>(" AND squadra_a = ?",squadraA));
+				filtri.add(new Pair(" AND squadra_a = ?",squadraA));
 			}
 			
 			if(!squadraB.equals("")) {
-				filtri.add(new Pair<String,String>(" AND squadra_b = ?",squadraB));
+				filtri.add(new Pair(" AND squadra_b = ?",squadraB));
 			}
 			
 			
 			if(piuGiusti.equals("true") || piuSbagliati.equals("true")) {
-				filtri.add(new Pair<String,String>(" GROUP BY v.url HAVING COUNT(commento) BETWEEN " + numeroCommentiMin + " AND " + numeroCommentiMax + " ORDER BY numero_risposte_giuste DESC",""));
+				filtri.add(new Pair(" GROUP BY v.url HAVING COUNT(commento) BETWEEN " + numeroCommentiMin + " AND " + numeroCommentiMax + " ORDER BY numero_risposte_giuste DESC",""));
 			}
 			else if(cercaIn.equals("prove_di_autovalutazione")) {
-				filtri.add(new Pair<String,String>(" GROUP BY v.url HAVING COUNT(commento) BETWEEN " + numeroCommentiMin + " AND " + numeroCommentiMax ,""));
+				filtri.add(new Pair(" GROUP BY v.url HAVING COUNT(commento) BETWEEN " + numeroCommentiMin + " AND " + numeroCommentiMax ,""));
 			}
 			else {
-				filtri.add(new Pair<String,String>(" GROUP BY v.url HAVING COUNT(commento) BETWEEN "+ numeroCommentiMin + " AND " + numeroCommentiMax,""));
+				filtri.add(new Pair(" GROUP BY v.url HAVING COUNT(commento) BETWEEN "+ numeroCommentiMin + " AND " + numeroCommentiMax,""));
 			}
 			
-			for (Pair<String,String> filtro : filtri) {
-				query_ricerca_per_filtri+= filtro.fst;
+			for (Pair filtro : filtri) {
+				query_ricerca_per_filtri+= filtro.getFirst();
 			}
 
 			PreparedStatement statement = connection.prepareStatement(query_ricerca_per_filtri);
 			statement.setInt(1, durataMinima);
 			statement.setInt(2, durataMassima);
 
-			for (Pair<String,String> filtro : filtri) {
-				if(!filtro.snd.equals(""))
-					statement.setString(++contFiltri, filtro.snd);
+			for (Pair filtro : filtri) {
+				if(!filtro.getSecond().equals(""))
+					statement.setString(++contFiltri, filtro.getSecond().toString());
 			}
 			
 			ResultSet result = statement.executeQuery();
@@ -722,9 +724,9 @@ public class VideoDAO_JDBC implements VideoDAO{
 
 	
 	@Override
-	public ArrayList<Pair<Video,Integer>> getClassifica(String filtro) {
+	public ArrayList<Pair> getClassifica(String filtro) {
 		Connection connection = null;
-		ArrayList<Pair<Video,Integer>> classifica_video = new ArrayList<Pair<Video,Integer>>();
+		ArrayList<Pair> classifica_video = new ArrayList<Pair>();
 	
 		try {
 			connection = DBManager.getInstance().getConnection();

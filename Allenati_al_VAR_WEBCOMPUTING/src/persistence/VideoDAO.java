@@ -2,8 +2,7 @@ package persistence;
 
 import java.util.ArrayList;
 
-import com.sun.tools.javac.util.Pair;
-
+import model.Pair;
 import model.Video;
 
 public interface VideoDAO {
@@ -22,5 +21,5 @@ public interface VideoDAO {
 	public ArrayList<Video> findByName(String nome);
 	public int getPunteggioForCategoria(String email, String categoria);
 	public ArrayList<Integer> getPunteggioForCategoriaAndMese(String email, String categoria);
-	public ArrayList<Pair<Video,Integer>> getClassifica(String filtro);
+	public ArrayList<Pair> getClassifica(String filtro);
 }
