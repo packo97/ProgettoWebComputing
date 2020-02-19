@@ -1,0 +1,129 @@
+#body{
+	font-family: "Garamond";
+}
+
+#headerHome{
+	opacity: 0.9;
+	background-color: #FFFFFF;
+	max-width: 100%;
+}
+
+.container{
+	max-width: 85%;
+}
+
+#colonnaDx{
+	max-height: 700px;
+}
+
+.column {
+	 margin-top:3%;
+}
+.row{
+	margin-right: 5%;
+	margin-bottom: 1%;
+}
+#cornice{
+	opacity: 0.9;
+	background-color:#ffffff;
+}
+
+#rigaButton{
+	margin-left: 5%; 
+}
+
+#addPreferiti{
+	color: white;
+}
+
+
+#dati_video{
+	margin-left: 5%;
+	font-size:20px;
+	
+}
+
+#nome_video{
+	font-size:21px;
+	text-align: left;
+	word-break: break-all;
+  	white-space: pre-line;
+	
+}
+
+#descrizione,#categoria,#difficolta{
+	text-align: left;
+}
+
+#visualizzazioni{
+	text-align: right;
+}
+
+.up{
+	height: 33%;
+  	overflow-y: scroll;
+  	margin-top: 20%;
+  	font-size:0;
+  	text-overflow: ellipsis;
+}
+.down{
+	width:80%;
+	height: 18%;
+}
+.three{
+	height: 33%;
+	margin-bottom:10%;
+}
+
+iframe{
+	width: 90%;
+	margin-left: 5%;
+    object-fit: cover;
+    z-index: -100;
+}
+	
+
+#rispostaCorretta{
+	width:45%;
+	height:70%;
+	font-family: "Garamond";
+	font-size:20px;
+	margin-top: 10%;
+	font-weight: 900;
+	
+}
+#rispostaErrata{
+	width:45%;
+	height:70%;
+	font-family: "Garamond";
+	font-size:20px;
+	margin-top: 10%;
+	font-weight: 900;
+}
+
+#underPanel{
+	margin-top:10%;
+	margin-right:7%;	
+}
+
+#lista_commenti{
+	text-align:left;
+	word-break: break-all;
+  	white-space: pre-line;
+  	 
+}
+
+#data{
+	font-size:14px;
+}
+#button_invia{
+	background-color :#343a40;
+	color:white; 
+}
+#commento{
+	font-size: 25px;
+}
+
+#img_referee{
+	width:60px;
+}

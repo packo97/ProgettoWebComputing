@@ -1,0 +1,34 @@
+#jumbotron_totale{
+	background-color: white;
+}
+#jumbotronSx{
+	background-color: white;
+}
+
+#jumbotronDx{
+	background-color: #212529;
+}
+
+iframe{
+	border: solid 3px rgba(255,255,255,0);
+	pointer-events: none;
+}
+
+.div_video{
+	float: left; 
+	margin: 20px 20px 20px 20px;
+}
+
+.rigaVideoEsito{
+	display: flex;
+	margin-bottom: 2px;
+	height: 20px;
+}
+
+.jumbotron{
+	padding-top:0;
+}
+
+.row{
+	padding-bottom:0;
+}

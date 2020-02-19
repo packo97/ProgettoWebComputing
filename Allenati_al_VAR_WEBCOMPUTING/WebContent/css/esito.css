@@ -1,0 +1,20 @@
+body {
+	/*background-image:url(../img/background.jpg);*/
+	background-color: #1e1a55;
+  	font-family: "Poppins", sans-serif;
+}
+
+#headerHome{
+	opacity: 0.9;
+	background-color: #FFFFFF;
+	max-width: 100%;
+}
+
+.container{
+	margin-top: 5%;
+}
+
+.badge{
+	font-size: 22px;
+	font-weight: 900;
+}

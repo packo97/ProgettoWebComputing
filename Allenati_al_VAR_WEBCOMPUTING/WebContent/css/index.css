@@ -1,0 +1,117 @@
+body {
+	/*background-image:url(../img/background.jpg);*/
+	background-color: #e9ecef;
+  	font-family: "Poppins", sans-serif;	
+}
+
+#imgIndex{
+	width: 80%;
+	margin: auto;    
+    display: block;
+}
+
+.wrapper{
+	margin-top: 8%;
+	position:relative;
+  	display: flex;
+  	align-items: center;
+  	flex-direction: column; 
+  	justify-content: center;
+  	padding: 20px;
+  	opacity: 0.9;
+}
+#formatErrato{
+  	
+  	
+  	padding: 5px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+  	width: 85%;
+	
+	
+}
+
+#formatRegistrazione{
+  	
+  	padding: 5px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+  	width: 85%;
+	
+	
+}
+
+
+#formContent {
+  	
+  	border-radius: 10px 10px 10px 10px;
+  	background: #FFFFFF;
+  	padding: 30px;
+  	width: 60%;
+  	position: relative;
+  	padding: 0px;
+  	text-align: center;
+  	
+}
+
+#formFooter {
+  	background-color: #f6f6f6;
+  	border-top: 1px solid #dce8f1;
+  	padding: 25px;
+  	text-align: center;
+  	border-radius: 0 0 10px 10px;
+}
+
+button[type=button]{
+	background-color: #56baed;
+  	border: none;
+  	color: white;
+  	padding: 15px 80px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	text-transform: uppercase;
+  	font-size: 13px;
+  	border-radius: 5px 5px 5px 5px;
+  	margin: 25px 20px 40px 20px;
+}
+#loginBTN {
+	margin-top:2%;
+	margin-bottom:4%;
+}
+
+input {
+  	background-color: #f6f6f6;
+  	border: none;
+  	color: #0d0d0d;
+  	padding: 15px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+  	margin: 5px;
+  	width: 85%;
+  	border: 2px solid #f6f6f6;
+  	border-radius: 5px 5px 5px 5px;
+}
+
+
+
+#icon {
+	margin:10px;
+	width:20%;
+	height:20%;
+}
+
+.links{
+color: blue;
+}
+
+.links a{
+margin-left: 10px;
+margin-top: -1%
+}

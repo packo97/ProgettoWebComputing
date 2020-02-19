@@ -1,0 +1,52 @@
+body {
+	background-color: white;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.jumbotron{
+	opacity: 0.9;
+}
+
+#timer{
+	font-size:42px;
+	height: 25%;
+	text-align : center;
+}
+
+
+#rigaTimer{
+	text-align:center;
+	height: 50%;
+}
+
+
+#rigaVideo{
+	font-size: 42px;
+	font-weight: 900;
+}
+
+a{
+	margin-top: 5%;
+}
+
+
+#rispostaCorretta{
+	margin-top: 15%;
+	width: 90%;
+	height: 20%;
+	font-size:18px;
+	font-weight: 900;
+
+}
+	
+#rispostaErrata{
+	width: 90%;
+	height: 20%;
+	font-size:18px;
+	font-weight: 900;
+}
+
+p{
+	font-size: 42px;
+}
+

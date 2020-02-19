@@ -1,0 +1,28 @@
+body {
+	background-color: white;
+  	font-family: 'Montserrat', sans-serif;
+}
+
+#headerHome{
+	opacity: 0.9;
+	background-color: #FFFFFF;
+	max-width: 100%;
+}
+
+.container{
+	margin-top: 5%;
+}
+
+.column {
+  float: left;
+  padding: 10px;
+}
+
+a{
+	color: black;
+}
+
+.buttonRemovePreferiti{
+	padding-top: 50%;
+}
+

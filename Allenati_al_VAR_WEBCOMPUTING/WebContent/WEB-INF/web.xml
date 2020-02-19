@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+
+<servlet>
+	<servlet-name>gestoreVideo</servlet-name>
+	<servlet-class>controller.GestoreVideo</servlet-class>
+ </servlet>
+  
+<servlet-mapping>
+ 	<servlet-name>gestoreVideo</servlet-name>
+ 	<url-pattern>/html/gestoreVideo</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  	<servlet-name>login</servlet-name>
+  	<servlet-class>controller.Login</servlet-class>
+</servlet>
+  
+<servlet-mapping>
+ 	<servlet-name>login</servlet-name>
+ 	<url-pattern>/html/login</url-pattern>
+</servlet-mapping>
+  
+<servlet>
+ 	<servlet-name>Home</servlet-name>
+ 	<servlet-class>controller.Home</servlet-class>
+</servlet>
+ 
+<servlet-mapping>
+	<servlet-name>Home</servlet-name>
+	<url-pattern>/html/home</url-pattern>
+</servlet-mapping>
+
+ 
+<servlet>
+ 	<servlet-name>Ricerca</servlet-name>
+ 	<servlet-class>controller.Ricerca</servlet-class>
+</servlet>
+ 
+<servlet-mapping>
+ 	<servlet-name>Ricerca</servlet-name>
+ 	<url-pattern>/html/risultatoRicerca</url-pattern>
+</servlet-mapping>
+
+ 
+<servlet>
+  	<servlet-name>MostraVideo</servlet-name>
+  	<servlet-class>controller.MostraVideo</servlet-class>
+</servlet>
+  
+<servlet-mapping>
+	<servlet-name>MostraVideo</servlet-name>
+	<url-pattern>/html/pagina_video</url-pattern>
+</servlet-mapping>
+ 
+<servlet>
+  	<servlet-name>GestorePagine</servlet-name>
+  	<servlet-class>controller.GestorePagine</servlet-class>
+</servlet>
+  
+<servlet-mapping>
+	<servlet-name>GestorePagine</servlet-name>
+	<url-pattern>/html/gestorePagine</url-pattern>
+</servlet-mapping>
+ 
+<servlet>
+  	<servlet-name>ProvaAutovalutazione</servlet-name>
+  	<servlet-class>controller.GestoreProvaAutovalutazione</servlet-class>
+</servlet>
+  
+<servlet-mapping>
+	<servlet-name>ProvaAutovalutazione</servlet-name>
+	<url-pattern>/html/prova_autovalutazione</url-pattern>
+</servlet-mapping>
+ 
+<servlet>
+  	<servlet-name>GestoreEsito</servlet-name>
+  	<servlet-class>controller.GestoreEsito</servlet-class>
+</servlet>
+  
+<servlet-mapping>
+	<servlet-name>GestoreEsito</servlet-name>
+	<url-pattern>/html/esito</url-pattern>
+</servlet-mapping>
+
+
+
+</web-app>

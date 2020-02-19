@@ -1,0 +1,24 @@
+body {
+	background-color: white;
+	font-family: 'Montserrat', sans-serif;
+}
+
+a{
+	color: black;
+}
+
+.container{
+	margin-top: 5%;
+}
+
+.row{
+	margin-top: 10%;
+}
+
+#img_referee{
+	width: 50px;
+}
+
+p{
+	font-size: 24px;
+}
