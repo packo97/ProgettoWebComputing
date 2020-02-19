@@ -1,9 +1,0 @@
-Merge branch 'master' of
-https://github.com/nikocostantino/Allenati_al_VAR
-
-Conflicts:
-	bin/persistence/DBManager.class
-	src/persistence/EsitoDAO_JDBC.java
-	src/persistence/PreferitiDAO_JDBC.java
-	src/persistence/VideoDAO.java
-	src/persistence/VideoDAO_JDBC.java
