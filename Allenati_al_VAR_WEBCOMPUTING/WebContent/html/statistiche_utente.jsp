@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="../css/statistiche_utente.css" type="text/css">
 	<script type="text/javascript" src="../js/risultatoRicerca.js"></script>
 	<script type="text/javascript" src="../js/statistiche_utente.js"></script>
+	
 	<meta charset="UTF-8">
 	<title>ALLENATI AL VAR - Statistiche</title>
 </head>
@@ -23,58 +24,59 @@
 	<%@include file="header_default.jsp" %>
 
 	<div class="container">
-
-  			<div id="${utente.email}"class="row">
-  				
-  				<div class="column col-sm-1">
-  					<img id="img_referee" src="../img/referee.png">
-  				</div>
-  				<div class="column col-sm-3">
-  					<p>${utente.nome} ${utente.cognome}</p>					 
-  				</div>
-  				<div class="column col-sm-1">
-  						<img id="img_referee" src="../img/icona_calendario.png">
-  					</div>
-  					<div class="column col-sm-3">
-  						<p>${utente.dataRegistrazione}</p>  
-  					</div>
-  				<div class="column col-sm-1">
-  					<img id="img_referee" src="../img/icona_bersaglio.png">
-  				</div>
-  				<div class="column col-sm-3">
-  					<p>${utente.punteggio}</p>			 
-  				</div>
-  			</div>
-  					
-  			<div class="row"> 			
-  				<div class="column col-sm-6">
-  					<canvas id="graficoHorizontalBarCategorie"></canvas>
-  				</div>
-  				<div class="column col-sm-6">
-  				</div>
-  			</div>
-  			<div class="row">
-  				<div class="column col-sm-6">
-  				</div>
-  				<div class="column col-sm-6">
-  					<canvas id="graficoPieChartCategorie"></canvas>
-  				</div>
-  			</div>
-  			
-  			<div class="row">
-  				<div class="column col-sm-6">
-  					<canvas id="graficoPieChartProveAutovalutazione"></canvas>
-  				</div>
-  				<div class="column col-sm-6">
-  				</div>
-  			</div>
-  			
-  			<div class="row">
-  				<div class="column col-sm-12">
-  					<canvas id="graficoLineChartCategorie"></canvas>
-  				</div>
-  			</div>	
-  	</div>
-
+		<div id="${utente.email}"class="row">
+			
+			<div class="column col-sm-1">
+				<img id="img_referee" src="../img/referee.png">
+			</div>
+			
+			<div class="column col-sm-3">
+				<p>${utente.nome} ${utente.cognome}</p>					 
+			</div>
+			
+			<div class="column col-sm-1">
+				<img id="img_referee" src="../img/icona_calendario.png">
+			</div>
+	
+			<div class="column col-sm-3">
+				<p>${utente.dataRegistrazione}</p>  
+			</div>
+	
+			<div class="column col-sm-1">
+				<img id="img_referee" src="../img/icona_bersaglio.png">
+			</div>
+			
+			<div class="column col-sm-3">
+				<p>${utente.punteggio}</p>			 
+			</div>
+		</div>
+				
+		<div class="row"> 			
+			<div class="column col-sm-6">
+				<canvas id="graficoHorizontalBarCategorie"></canvas>
+			</div>
+			<div class="column col-sm-6"></div>
+		</div>
+		
+		<div class="row">
+			<div class="column col-sm-6"></div>
+			<div class="column col-sm-6">
+				<canvas id="graficoPieChartCategorie"></canvas>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="column col-sm-6">
+				<canvas id="graficoPieChartProveAutovalutazione"></canvas>
+			</div>
+			<div class="column col-sm-6"></div>
+		</div>
+		
+		<div class="row">
+			<div class="column col-sm-12">
+				<canvas id="graficoLineChartCategorie"></canvas>
+			</div>
+		</div>	
+	</div>
 </body>
 </html>

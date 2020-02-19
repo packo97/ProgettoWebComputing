@@ -1,17 +1,11 @@
-
 $("document").ready(loadGrafici);
-
-
-
 
 function loadGrafici(){
 
 		var c = {
 				azione : "getStatisticheCategorie",
-				utente : $(".container").children("div").attr("id"),
-				
+				utente : $(".container").children("div").attr("id"),	
 		};
-		
 		
 		$.ajax({
 			type: "POST",
@@ -50,9 +44,6 @@ function loadGrafici(){
 					}
 				});
 				
-				
-				
-				
 			    new Chart(document.getElementById("graficoPieChartCategorie").getContext('2d'), {
 			      type: 'pie',
 			      data: {
@@ -67,9 +58,7 @@ function loadGrafici(){
 			        responsive: true
 			      }
 			    });
-				
-				
-			    
+
 			    new Chart(document.getElementById("graficoLineChartCategorie").getContext('2d'), {
 			    	type: 'line',
 			    	data: {
@@ -121,8 +110,7 @@ function loadGrafici(){
 				    	responsive: true
 				    }
 			    });
-			    
-			    
+			     
 			    new Chart(document.getElementById("graficoPieChartProveAutovalutazione").getContext('2d'), {
 				      type: 'pie',
 				      data: {
@@ -139,12 +127,6 @@ function loadGrafici(){
 				        responsive: true
 				      }
 				    });
-				
-				
 			}	
 		});	
-	
-	
-	
 }
-

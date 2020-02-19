@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="../css/pagina_video.css" type="text/css">
 	<script type="text/javascript" src="../js/pagina_video.js"></script>
 	
-	<script src="https://www.youtube.com/iframe_api" ></script >
+	<script src="https://www.youtube.com/iframe_api" ></script>
 	
 	<script>
 	
@@ -62,108 +62,91 @@
 	
 </head>
 <body>
+
 	<%@include file="header_default.jsp" %>
-	<div id="filtri"></div>
 	
 	<div id="cornice" class="container">
 	
-				<c:if test="${link != null}">
-						
-						<div class="alert alert-success alert-dismissible fade show" role="alert">
-						  <strong>Video aggiunto correttamente!</strong>
-						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						    <span aria-hidden="true">&times;</span>
-						  </button>
-						</div>
-		 		</c:if>
+		<c:if test="${link != null}">
+				
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+				  <strong>Video aggiunto correttamente!</strong>
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+ 		</c:if>
 		 		
-		 		<c:if test="${modificato != null}">
-						
-						<div class="alert alert-success alert-dismissible fade show" role="alert">
-						  <strong>Video modificato correttamente!</strong>
-						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						    <span aria-hidden="true">&times;</span>
-						  </button>
-						</div>
-		 		</c:if>
+ 		<c:if test="${modificato != null}">
+				
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+				  <strong>Video modificato correttamente!</strong>
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+ 		</c:if>
 
 	 	<div  class="row">
 		 	<div id="colonnaSx" class="column col-sm-7">
-
 				<div id= "rigaButton" class="row">
-					
 					<div align="right" class="column col-sm-12">
 						<div id="div_button_gestione" class="btn-group btn-group-toggle" data-toggle="buttons">
+							
 							<c:set var = "isPreferito" scope = "session" value = "${isPreferito}"/>
+							
 							<c:if test="${isPreferito == false}">
 								<a class="btn btn-success" id="addPreferiti" type="submit" onclick="inserisciPreferiti('${url}')">Preferiti</a>
 							</c:if>	
+							
 							<c:if test="${isPreferito == true}">
 								<a class="btn btn-success" id="addPreferiti" type="submit" onclick="inserisciPreferiti('${url}')">Rimuovi</a>
 							</c:if>	
+							
 							<c:if test="${amministratore == true}">
-								
 								  <a class="btn btn-primary" id="button_modifica" type="submit" href="gestorePagine?pagina=modificaVideo&&url=${url}">Modifica</a>
 								  <a class="btn btn-danger" id="button_elimina" href="#" data-toggle="modal" data-target="#Eliminazione">Elimina</a>
-								
 							</c:if>
 						</div>
-
 					</div>
-					
-					
 				</div>
 		 		
-
 				<div id="video-placeholder"></div>
 				<div id="controls"> </div>
 				
 				<div id="dati_video">
 					<div id="primaRiga" class="row">
-					
-						<p class="badge badge-dark column col-sm-9" id="nome_video"> ${nome}</p>
-						
+						<p class="badge badge-dark column col-sm-9" id="nome_video"> ${nome}</p>	
 						<p class="badge badge-light column col-sm-3" id="visualizzazioni"> ${visualizzazioni} visualizzazioni</p>		
-					</div>
-					 
+					</div>	 
 					<p class="badge badge-light column col-sm-12" id="descrizione"> ${descrizione}</p>
 					<br>
 					<p class="badge badge-light column col-sm-12" id="categoria"> Categoria: ${categoria} </p>
 					<br>
 					<p class="badge badge-light column col-sm-12"id="difficolta"> ${difficolta} </p>
-					<br>
-							
+					<br>		
 				</div>
-				
-				
-				
 			</div>
 		
 			<div align="right" id="colonnaDx" class="column col-sm-5">
-				
-				<div  id="lista_commenti" class="up" >
-					<c:forEach items="${lista_commenti}" var="c">   
-						      	                            	
+				<div  id="lista_commenti" class="up" >				
+					<c:forEach items="${lista_commenti}" var="c">     	                            	
 						<div class="container mt-3">
 							 <div class="media border p-3">
-						  		<img id="img_referee" src="../img/referee.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" >       
+						  		<img id="img_referee" src="../img/referee.png" alt="referee" class="mr-3 mt-3 rounded-circle" >       
 						    	<div class="media-body">
 						      		<h4>${c.autore.nome} ${c.autore.cognome}</h4>
 						      		<small><i id="data">Posted on ${c.data}</i></small>
 						      		<p id="commento"> ${c.testo} </p>      
 						    	</div>
 						  	</div>
-						</div>	
-								
+						</div>				
 					</c:forEach>
 				</div>
 			
 				<div  id="underPanel" class="down">
-
-						<textarea class="form-control" id="textCommento"  name="commento" placeholder="Scrivi un commento..."></textarea>
-						<input  id="button_invia" class="form-control" type="submit" value="Invia" onclick="inserisciCommento('${url}')"/>
-						
-						
+					<textarea class="form-control" id="textCommento"  name="commento" placeholder="Scrivi un commento..."></textarea>
+					<input  id="button_invia" class="form-control" type="submit" value="Invia" onclick="inserisciCommento('${url}')"/>
 				</div>
 			
 				<div align="center" id="risposte" class="three"> 
@@ -172,46 +155,44 @@
 						<button class="btn btn-dark" id="rispostaCorretta" onclick="inserisciRisposta('${url}','${true}')"> ${rispostaCorretta} </button>
 						<button class="btn btn-dark" id="rispostaErrata" onclick="inserisciRisposta('${url}','${false}')"> ${rispostaErrata} </button>
 					</c:if>
+					
 					<c:if test="${ordineRisposte==1}">
 						<button class="btn btn-dark" id="rispostaErrata" onclick="inserisciRisposta('${url}','${false}')"> ${rispostaErrata} </button>
 						<button class="btn btn-dark" id="rispostaCorretta" onclick="inserisciRisposta('${url}','${true}')"> ${rispostaCorretta} </button>
 					</c:if>
+					
 				</div>
-		
 			</div>	
 		</div>	
 	</div>
 	
-	<!-- INIZIO CUSTOM ALERT -->
-<div class="modal fade" id="Eliminazione">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Sei sicuro?</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          Vuoi eliminare davvero questo video?
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-warning" data-dismiss="modal">Annulla</button>
-          <a class="btn btn-danger" href="gestoreVideo?eliminaVideo=${url}">Elimina</a>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-
-<!-- FINE CUSTOM ALERT -->
+		<!-- INIZIO CUSTOM ALERT -->
+		
+	<div class="modal fade" id="Eliminazione">
+	    <div class="modal-dialog modal-sm">
+	      <div class="modal-content">
+	      
+	        <!-- Modal Header -->
+	       <div class="modal-header">
+	         <h4 class="modal-title">Sei sicuro?</h4>
+	         <button type="button" class="close" data-dismiss="modal">&times;</button>
+	       </div>
+	       
+	       <!-- Modal body -->
+	       <div class="modal-body">
+	         Vuoi eliminare davvero questo video?
+	       </div>
+	       
+	       <!-- Modal footer -->
+	       <div class="modal-footer">
+	         <button type="button" class="btn btn-warning" data-dismiss="modal">Annulla</button>
+	         <a class="btn btn-danger" href="gestoreVideo?eliminaVideo=${url}">Elimina</a>
+	       </div>
+	       
+	     </div>
+	   </div>
+	 </div>
 	
-	
-	
-	
+		<!-- FINE CUSTOM ALERT -->
 </body>
 </html>

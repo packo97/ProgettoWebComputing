@@ -5,17 +5,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
-
-import model.Categoria;
 import model.Commenti;
 import model.Esito;
-import model.OpzioniRisposte;
 import model.Utente;
 import model.Video;
 
@@ -30,7 +22,6 @@ public class DBManager {
 	static {
 		try {
 			Class.forName("org.postgresql.Driver").newInstance();
-			//manca un pezzo
 		} 
 		catch (Exception e) {
 			System.err.println("PostgresDAOFactory.class: failed to load MySQL JDBC driver\n"+e);
@@ -43,7 +34,6 @@ public class DBManager {
 		return connection;
 	}
 	
-	
 	public static DBManager getInstance() {
 		if (instance == null) {
 			instance = new DBManager();
@@ -52,13 +42,10 @@ public class DBManager {
 	}
 	
 	private DBManager() {
-		utenti = new ArrayList<Utente>();
-		
+		utenti = new ArrayList<Utente>();	
 		video = new ArrayList<Video>();
 		piu_visti = new ArrayList<Video>();
-		
-		
-	
+
 	}
 	
 	public void inserisciUtente(Utente u) {
@@ -102,8 +89,7 @@ public class DBManager {
 			return true;
 		}
 		else
-			return false;
-		
+			return false;	
 	}
 	
 	public Commenti getCommenti(String url_video) {
@@ -111,15 +97,12 @@ public class DBManager {
 	}
 	
 	public void aggiungiCommento(String commento, String url) {
-		//set utf8 alla stringa commento
 		try {
 			String comm = new String(commento.getBytes(), "UTF-8");
 			getCommentiDAO().save(comm, url);
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public void aggiungiAlloStorico(Esito esito) {
@@ -141,14 +124,14 @@ public class DBManager {
 			
 			int totaleVisualizzazioni = 0;
 			piu_visti.clear();
+			
 			ArrayList<Video> video_nel_db = getVideo();
 			
 			for (Video video : video_nel_db) {
 				totaleVisualizzazioni+= video.getVisualizzazioni();
 			}
+			
 			int mediaVisualizzazioni = totaleVisualizzazioni / video_nel_db.size();
-			
-			
 			
 			for (Video video : video_nel_db) {
 				if(video.getVisualizzazioni() > mediaVisualizzazioni) {
@@ -158,16 +141,12 @@ public class DBManager {
 			}
 		}
 		catch (ArithmeticException e) {
-			return piu_visti; //db vuoto
+			return piu_visti;
 		}
 		finally {
 			return piu_visti;
-		}
-		
-		
+		}	
 	}
-
-	
 
 	public Utente getUtenteCorrente() {
 		return utenteCorrente;
@@ -177,7 +156,6 @@ public class DBManager {
 		this.utenteCorrente = utenteCorrente;
 	}
 
-	
 	public VideoDAO getVideoDAO() {
 		return new VideoDAO_JDBC();
 	}
@@ -234,9 +212,4 @@ public class DBManager {
 	public boolean esisteEmail(String email) {
 		return getUtenteDAO().esisteUtente(email);
 	}
-
-
-	
-	
-	
 }

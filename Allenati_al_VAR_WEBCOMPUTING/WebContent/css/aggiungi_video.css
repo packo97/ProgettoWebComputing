@@ -13,20 +13,15 @@
 }
 
 #formatErrato{
-  	
-  	
   	padding: 5px 32px;
   	text-align: center;
   	text-decoration: none;
   	display: inline-block;
   	font-size: 16px;
   	width: 85%;
-	
-	
 }
 
 #formContent {
-  	
   	border-radius: 10px 10px 10px 10px;
   	padding: 30px;
   	width: 90%;
@@ -35,8 +30,6 @@
   	padding: 0px;
   	text-align: center;
 }
-
-
 
 input, textarea {
   	background-color: #f6f6f6;
@@ -59,8 +52,7 @@ select, option {
   	padding: 15px 32px;
   	text-align-last: center;
   	text-align: center;
-  	      color: #000;
-  	
+  	color: #000;
   	text-decoration: none;
   	display: inline-block;
   	font-size: 16px;
@@ -68,28 +60,24 @@ select, option {
   	width: 85%;
   	border: 2px solid #f6f6f6;
   	border-radius: 5px 5px 5px 5px;
-  	
   	-ms-text-align-last: center;
    	-moz-text-align-last: center;
 }
 
 select:required:invalid {
-      color: #666;
-      }
+	color: #666;
+}
 
 option[value=""][disabled] {
-     display: none;
+	display: none;
 }
 
 .btn-group-toggle{
-  
   	margin-top: 1.5%;
   	position: relative;
   	margin-bottom: 1.5%;
   	text-align: center;
-  	
 }
-
 
 #headerHome{
 	opacity: 0.9;
@@ -102,20 +90,17 @@ option[value=""][disabled] {
 }
 
 .inactive{
-	
 	display: none;
 }
 
 #avanti{
-	
 	position: relative;
 	margin-top: 1.5%;
 	margin-bottom: 1.5%;
-	
 }
 
 .links{
-color: blue;
+	color: blue;
 }
 
 .column {
@@ -132,6 +117,6 @@ color: blue;
 }
 
 .links a{
-margin-left: 10px;
-margin-top: -1%
+	margin-left: 10px;
+	margin-top: -1%
 }

@@ -21,6 +21,7 @@
 
 <body>
 <%@include file="header_default.jsp" %>
+
 <div class="row">
 		<div class="column col-sm-9">
 			<div id="ricerca"></div>
@@ -30,17 +31,14 @@
 		</div>
 </div>		
 
-<c:if test="${eliminaVideo != null}">
-						
-					<div class="alert alert-danger alert-dismissible fade show" role="alert">
-					  <strong>Video rimosso correttamente!</strong>
-					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					    <span aria-hidden="true">&times;</span>
-					  </button>
-					</div>
+<c:if test="${eliminaVideo != null}">				
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+	  <strong>Video rimosso correttamente!</strong>
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
 </c:if>
-
-
 
 <div id="jumbo1" class="jumbotron">
 
@@ -72,9 +70,7 @@
 			</c:if>
 			<div class="inline" align="center">
 				<div class="rowUp">
-					
-						<iframe id="single_video" src="${v.url}" class="video-fluid"></iframe>
-					
+					<iframe id="single_video" src="${v.url}" class="video-fluid"></iframe>	
 				</div>
 				<div class="rowDown">
 					<a class="badge badge-light"  id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a> 
@@ -86,6 +82,7 @@
 				</div>
 			</c:if>
 		</c:forEach>
+		
 		<c:if test="${cont % 5 != 0}">
 			</div>
 		</c:if>
@@ -138,9 +135,7 @@
 			</c:if>
 			<div class="inline" align="center">
 				<div class=rowUp>
-				
-						<iframe id="single_video" src="${v.url}" class="video-fluid"></iframe>
-	
+					<iframe id="single_video" src="${v.url}" class="video-fluid"></iframe>
 				</div>
 				<div class="rowDown">
 				 <a class="badge badge-light"  id="textNomeVideo" href="pagina_video?url=${v.url}">${v.nome}</a> 

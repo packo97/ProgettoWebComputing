@@ -9,21 +9,20 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	
 	<link rel="stylesheet" href="../css/prova_autovalutazione.css" type="text/css">
 	<script type="text/javascript" src="../js/prova_autovalutazione.js"></script>
 	
 	<script src="https://www.youtube.com/iframe_api" ></script >
 	
-	
 	<meta charset="UTF-8">
-	<!-- REFRESH PAGINA OGNI 3 SECONDI <meta http-equiv="refresh" content="3"/> -->
 	<title>ALLENATI AL VAR - Prova Autovalutazione</title>
-
 </head>
 
 <body>
 
 	<c:set var = "videoProva" scope = "session" value = "${videoProva}"/>
+	
 	<div id="cornice" class="jumbotron">
 		<div class="row">
 			<div class="column col-sm-10">
@@ -35,6 +34,7 @@
 				<a class="btn btn-danger" href="prova_autovalutazione?termina=true" id="buttonTermina">TERMINA</a>
 			</div>
 		</div>
+		
 		<div class="row">
 			<div class="column col-sm-8">
 				<div id="video-placeholder"></div>
@@ -56,7 +56,6 @@
 
 	</div>
 	
-
 	<script>
 	
 	var player;
@@ -125,10 +124,7 @@
 		  }
 		}, 1000);
 	}
-		
 	</script>
-	
-	
 </body>
 
 </html>

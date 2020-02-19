@@ -12,17 +12,15 @@ public class Esito {
 	private Boolean risultato;
 	
 	public Esito() {
-		
 		video = new ArrayList<Video>();
 		data = new Date();
 		risultato = true;
 	}
 	
 	public Esito(ArrayList<Video> video) {
-	
 		this.video = video;
-		data = new Date();
-		risultato = true;
+		this.data = new Date();
+		this.risultato = true;
 	}
 	
 	public ArrayList<Video> getVideo() {
@@ -62,25 +60,20 @@ public class Esito {
 		
 		for (int i = 0; i < items.size(); i++) {
 			video.add(new Video());
-			if(i==0) {
+			
+			if(i == 0) {
 				StringBuilder sb = new StringBuilder(items.get(i).toString());
 				sb.deleteCharAt(0);
 				items.set(i, sb.toString());
 			}
-			if(i==9) {
+			
+			if(i == 9) {
 				StringBuilder sb = new StringBuilder(items.get(i).toString());
 				sb.deleteCharAt(sb.toString().length()-1);
 				items.set(i, sb.toString());
 			}
 			
-			video.get(i).setUrl(items.get(i).toString());
-			//OpzioniRisposte risposte = new OpzioniRisposte("corretta", "errata");
-			//risposte.setRispostaUtente(true);
-			//video.get(i).setRisposte(risposte);
-			
-		}
-		
+			video.get(i).setUrl(items.get(i).toString());		
+		}	
 	}
-	
-	
 }

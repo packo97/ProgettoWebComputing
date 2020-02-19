@@ -9,13 +9,11 @@ public class Pair {
 		this.first = first;
 		this.second = second;
 	}
+	
 	public Pair(Video first , Integer second) {
 		this.first = first;
 		this.second = second;
 	}
-	
-	
-	
 	
 	public Object getFirst() {
 		return first;
@@ -31,7 +29,5 @@ public class Pair {
 	
 	public void setSecond(Object second) {
 		this.second = second;
-	}
-	
-	
+	}	
 }

@@ -1,10 +1,10 @@
 package model;
 
 import java.util.ArrayList;
-
 import persistence.DBManager;
 
 public class Utente {
+	
 	private String nome;
 	private String cognome;
 	private String email;
@@ -40,6 +40,7 @@ public class Utente {
 	}
 	
 	public Utente(String nome, String cognome) {
+		
 		this.nome = nome;
 		this.cognome = cognome;
 		this.video_preferiti = new ArrayList<Video>();
@@ -49,6 +50,7 @@ public class Utente {
 	}
 	
 	public Utente(String nome, String cognome, String email, String password, String amministratore) {
+		
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
@@ -64,24 +66,31 @@ public class Utente {
 		this.video_recenti = new ArrayList<Video>();
 		this.punteggio = 0;
 	}
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	public String getCognome() {
 		return cognome;
 	}
+	
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
+	
 	public String getPassword() {
 		return password;
 	}
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 	public Boolean getAmministratore() {
 		return amministratore;
 	}
@@ -102,6 +111,7 @@ public class Utente {
 	}
 	
 	public void aggiungiAiPreferiti(Video v) {
+		
 		if(!video_preferiti.contains(v))
 			video_preferiti.add(v);
 		else
@@ -111,7 +121,6 @@ public class Utente {
 	public ArrayList<Esito> getStorico() {
 		return storico;
 	}
-
 
 	public void setAmministratore(String amministratore) {
 		if(amministratore.equals("on"))

@@ -19,10 +19,8 @@
 <body>
 	<%@include file="header_default.jsp" %>
 	
-	<div class="row jumbotron">
-		
+	<div class="row jumbotron">	
 		<div id="info" class="column col-sm-3">
-
 			Allenati al Var &egrave; una piattaforma professionale per le persone
 			appassionate al mondo del calcio, il servizio &egrave; rivolto ad esempio ad
 			allenatori, direttori sportivi, giocatori e arbitri.
@@ -31,8 +29,8 @@
 			<img class="img_info" src=../img/img_info1.png>
 		</div>
 	</div>
-	<div class="row jumbotron">
-		
+	
+	<div class="row jumbotron">		
 		<div id="info" class="column col-sm-3">
 			Grazie ad Allenati al Var &egrave; possibile condividere video e partecipare a
 			discussioni con altri utenti, tra cui professionisti del mestiere. Tali
@@ -46,8 +44,8 @@
 			<img class="img_info" src=../img/img_info2.png>
 		</div>
 	</div>
-	<div class="row jumbotron">
-		
+	
+	<div class="row jumbotron">	
 		<div id="info" class="column col-sm-3">
 			Allenati al Var pu&ograve;
 			svolgere un ruolo base per la formazione di coloro che si affacciano
@@ -60,8 +58,8 @@
 			<img class="img_info" src=../img/img_info3.png>
 		</div>
 	</div>
-	<div class="row jumbotron">
-		
+	
+	<div class="row jumbotron">	
 		<div id="motto" class="column col-sm-12" align="center">
 			Aiutiamo i professionisti del calcio a crescere, a tutti i livelli di gioco.	
 		</div>

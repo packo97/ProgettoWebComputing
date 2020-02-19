@@ -16,19 +16,16 @@
 	
 	<script type="text/javascript" src="../js/risultatoRicerca.js"></script>
 	<script type="text/javascript" src="../js/editor_prova_autovalutazione.js"></script>
-	
 
-	
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
-	
 	<meta charset="UTF-8">
 	<title>ALLENATI AL VAR - Editor Prova Autovalutazione</title>
-
 </head>
 <body>
 	<%@include file="header_default.jsp" %>
+	
 	<div id="filtri"></div>
 	
 	<div id="jumbotron_totale"class="jumbotron">
@@ -52,64 +49,53 @@
 				</div>
 				
 			</div>
-			
-			
+				
 			<div id="jumbotronDx" class="contenitore column col-sm-6 jumbotron">
 				
 				<div class="row">
 					<div id="comandiDX1" class="column col-sm-9">
-						
 						<a id="buttonRimuoviSelezionati" onclick=""><img src="../img/icona_rimuovi_selezionati.png"></a>
 						<a id="buttonRimuoviTutti" onclick=""><img src="../img/icona_rimuovi_tutti.png"></a>
 						<a id="buttonUndo" onclick=""><img src="../img/icona_undo.png"></a>
 						<a id="buttonRedo" onclick=""><img src="../img/icona_redo.png"></a>
-						
-						
 					</div>
-					<div id="comandiDX2" class="column col-sm-3">
-						
-						
-						<a id="buttonCrea" onclick="creaProvaAutovalutazione()"><img src="../img/icona_carica.png"></a>
-						
+					
+					<div id="comandiDX2" class="column col-sm-3">				
+						<a id="buttonCrea" onclick="creaProvaAutovalutazione()"><img src="../img/icona_carica.png"></a>						
 					</div>
-				</div>
-				
-				
-			</div>
-			
+				</div>	
+			</div>		
 		</div>
 	</div>
 	
 	
-	<!-- INIZIO CUSTOM ALERT -->
-<div class="modal fade" id="myModalRipeti">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-       <div class="modal-header">
-         <h4 class="modal-title">Sei sicuro?</h4>
-         <button type="button" class="close" data-dismiss="modal">&times;</button>
-       </div>
-       
-       <!-- Modal body -->
-       <div class="modal-body">
-         Stai per iniziare una prova di autovalutazione.
-       </div>
-       
-       <!-- Modal footer -->
-       <div class="modal-footer">
-         <button type="button" class="btn btn-danger" data-dismiss="modal">Annulla</button>
-         <a class="btn btn-success" href="prova_autovalutazione?standard=true">Inizia</a>
-       </div>
-       
-     </div>
-   </div>
-</div>
-
-<!-- FINE CUSTOM ALERT -->
-
-
+		<!-- INIZIO CUSTOM ALERT -->
 	
+	<div class="modal fade" id="myModalRipeti">
+	    <div class="modal-dialog modal-sm">
+	      <div class="modal-content">
+	      
+	        <!-- Modal Header -->
+	       <div class="modal-header">
+	         <h4 class="modal-title">Sei sicuro?</h4>
+	         <button type="button" class="close" data-dismiss="modal">&times;</button>
+	       </div>
+	       
+	       <!-- Modal body -->
+	       <div class="modal-body">
+	         Stai per iniziare una prova di autovalutazione.
+	       </div>
+	       
+	       <!-- Modal footer -->
+	       <div class="modal-footer">
+	         <button type="button" class="btn btn-danger" data-dismiss="modal">Annulla</button>
+	         <a class="btn btn-success" href="prova_autovalutazione?standard=true">Inizia</a>
+	       </div> 
+	     </div>
+	   </div>
+	</div>
+	
+		<!-- FINE CUSTOM ALERT -->
+
 </body>
 </html>

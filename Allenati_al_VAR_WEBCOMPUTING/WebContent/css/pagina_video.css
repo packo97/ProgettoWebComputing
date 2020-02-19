@@ -19,10 +19,12 @@
 .column {
 	 margin-top:3%;
 }
+
 .row{
 	margin-right: 5%;
 	margin-bottom: 1%;
 }
+
 #cornice{
 	opacity: 0.9;
 	background-color:#ffffff;
@@ -36,11 +38,9 @@
 	color: white;
 }
 
-
 #dati_video{
 	margin-left: 5%;
-	font-size:20px;
-	
+	font-size:20px;	
 }
 
 #nome_video{
@@ -48,7 +48,6 @@
 	text-align: left;
 	word-break: break-all;
   	white-space: pre-line;
-	
 }
 
 #descrizione,#categoria,#difficolta{
@@ -66,10 +65,12 @@
   	font-size:0;
   	text-overflow: ellipsis;
 }
+
 .down{
 	width:80%;
 	height: 18%;
 }
+
 .three{
 	height: 33%;
 	margin-bottom:10%;
@@ -82,7 +83,6 @@ iframe{
     z-index: -100;
 }
 	
-
 #rispostaCorretta{
 	width:45%;
 	height:70%;
@@ -90,8 +90,8 @@ iframe{
 	font-size:20px;
 	margin-top: 10%;
 	font-weight: 900;
-	
 }
+
 #rispostaErrata{
 	width:45%;
 	height:70%;
@@ -109,17 +109,18 @@ iframe{
 #lista_commenti{
 	text-align:left;
 	word-break: break-all;
-  	white-space: pre-line;
-  	 
+  	white-space: pre-line;  	 
 }
 
 #data{
 	font-size:14px;
 }
+
 #button_invia{
 	background-color :#343a40;
 	color:white; 
 }
+
 #commento{
 	font-size: 25px;
 }

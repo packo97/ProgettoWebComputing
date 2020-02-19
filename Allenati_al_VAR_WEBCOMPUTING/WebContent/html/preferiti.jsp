@@ -19,36 +19,30 @@
 	<title>ALLENATI AL VAR - Preferiti</title>
 </head>
 <body>
+
 	<%@include file="header_default.jsp" %>
-	
-	
+
 	<div class="container">
-
-  				<div align="center" class="list-group">
-    				
-    			    	<c:forEach items="${video_preferiti}" var="v">
-    			    		
-	    			    		<div url="${v.url}" class="row">
-	    			    			<div class="list-group-item list-group-item-action">
-	    			    				<a href="pagina_video?url=${v.url}">
-				    			    		<div id="colonnaIframe" class="column col-sm-5">
-												<iframe class="embed-responsive-item" src="${v.url}"></iframe>		
-											</div>
-											<div class="column col-sm-6">
-					    			    		<p>${v.nome}</p>
-				    			    		</div>
-			    			    		</a>
-										<div class="column col-sm-1">
-				    			    		<img class="buttonRemovePreferiti" src="../img/icona_rimuovi.png">
-										</div>
-									</div>
-								</div>
-							
-						</c:forEach>
-
-  				
-  				</div>
+		<div align="center" class="list-group">			
+	    	
+	    	<c:forEach items="${video_preferiti}" var="v">
+	    		<div url="${v.url}" class="row">
+	    			<div class="list-group-item list-group-item-action">
+	    				<a href="pagina_video?url=${v.url}">
+	  			    		<div id="colonnaIframe" class="column col-sm-5">
+								<iframe class="embed-responsive-item" src="${v.url}"></iframe>		
+							</div>
+							<div class="column col-sm-6">
+	   			    			<p>${v.nome}</p>
+	  			    		</div>
+ 			    		</a>
+						<div class="column col-sm-1">
+  			    			<img class="buttonRemovePreferiti" src="../img/icona_rimuovi.png">
+						</div>
+					</div>
+				</div>
+			</c:forEach>
 		</div>
-		
+	</div>		
 </body>
 </html>

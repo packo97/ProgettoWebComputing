@@ -13,12 +13,10 @@ body {
 	text-align : center;
 }
 
-
 #rigaTimer{
 	text-align:center;
 	height: 50%;
 }
-
 
 #rigaVideo{
 	font-size: 42px;
@@ -29,14 +27,12 @@ a{
 	margin-top: 5%;
 }
 
-
 #rispostaCorretta{
 	margin-top: 15%;
 	width: 90%;
 	height: 20%;
 	font-size:18px;
 	font-weight: 900;
-
 }
 	
 #rispostaErrata{

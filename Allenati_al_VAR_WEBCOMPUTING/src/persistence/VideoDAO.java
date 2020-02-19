@@ -1,17 +1,16 @@
 package persistence;
 
 import java.util.ArrayList;
-
 import model.Pair;
 import model.Video;
 
 public interface VideoDAO {
 	
-	public void save(Video video);  // Create
-	public Video findByPrimaryKey(String url);     // Retrieve
+	public void save(Video video);
+	public Video findByPrimaryKey(String url);     
 	public ArrayList<Video> findAll();       
-	public void update(Video video); //Update
-	public void delete(String url); //Delete	
+	public void update(Video video);
+	public void delete(String url); 	
 	public boolean esisteVideo(String urlNuovo);
 	public boolean esisteNome(String nomeNuovo);
 	public boolean esisteNomeModifica(String modificaNome, String url);

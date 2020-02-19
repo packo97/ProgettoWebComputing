@@ -16,11 +16,7 @@ $("document").ready(function(){
 			data: JSON.stringify(c),
 			success: function(data){
 				var c = JSON.parse(data);
-			
-				
 			}	
-		});	
-			  
-			  
+		});		  
 	});
 });
