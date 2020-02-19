@@ -165,7 +165,7 @@ public class GestorePagine extends HttpServlet {
 			}
 			else if(json.getString("azione").equals("classifica")) {
 				
-				for(int i = 0; i<DBManager.getInstance().getVideoDAO().getClassifica(json.getString("filtro")).size(); i++) {
+				for(int i = 0; i < DBManager.getInstance().getVideoDAO().getClassifica(json.getString("filtro")).size(); i++) {
 					classificaVideo.add((Video) DBManager.getInstance().getVideoDAO().getClassifica(json.getString("filtro")).get(i).getFirst());
 					risposteCorretteVideo.add((Integer) DBManager.getInstance().getVideoDAO().getClassifica(json.getString("filtro")).get(i).getSecond());
 				}
