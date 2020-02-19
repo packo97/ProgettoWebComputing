@@ -20,16 +20,16 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 
 	private static int id = 0;
 	
-	
 	@Override
 	public void save(Esito esito) {
+		
 		Connection connection = null;
 	
 		try {
 				connection = DBManager.getInstance().getConnection();
 				
-				
 				String maxID = "SELECT MAX(id) FROM esiti";
+				
 				PreparedStatement statementMaxID = connection.prepareStatement(maxID);
 				ResultSet resMaxID = statementMaxID.executeQuery();
 				
@@ -39,9 +39,10 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 				}
 				
 				String insert = "INSERT INTO esiti(id, fk_video, data, risultato, fk_utente, risposta_utente) VALUES (?,?,?,?,?,?)";
+				
 				PreparedStatement statement = connection.prepareStatement(insert);
+				
 				for (Video video : esito.getVideo()) {
-					
 					statement.setInt(1, id);
 					statement.setString(2, video.getUrl());
 					statement.setDate(3, new java.sql.Date(esito.getData().getTime()));
@@ -51,47 +52,46 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 					
 					statement.executeUpdate();	
 				}
-				
-			
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		} finally {
 			id++;
+			
 			try {
 				connection.close();
 			} catch (SQLException e) {
 				throw new RuntimeException(e.getMessage());
 			}
 		}
-		
 	}
 
 	@Override
 	public ArrayList<Esito> findByPrimaryKey(String email) {
+		
 		Connection connection = null;
+		
 		ArrayList<Esito> storico = new ArrayList<Esito>();
+		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
-			PreparedStatement statement;
-
+			
 			String query = "SELECT * FROM esiti e JOIN video v ON e.fk_video=v.url WHERE e.fk_utente = ? ORDER BY e.id";
 
-			
-			statement = connection.prepareStatement(query);
+			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, email);
 			
 			ResultSet result = statement.executeQuery();
 			
 			Esito esito = null;
+			
 			while(result.next()) {
-	
 				boolean esiste = false;
 				for (Esito e : storico) {
-					if(e.getId()==result.getInt("id")) {
+					if(e.getId() == result.getInt("id")) {
 						esiste = true;
-					}
-						
+					}	
 				}
 				if(!esiste) {
 					esito = new Esito();
@@ -99,6 +99,7 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 					esito.setData(result.getDate("data"));
 					esito.setRisultato(result.getBoolean("risultato"));
 				}
+				
 				Video video = new Video();
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));
@@ -113,14 +114,8 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 				
 				if(!storico.contains(esito)) {
 					storico.add(esito);
-				}
-				
-				
-				
+				}		
 			}
-			
-			
-			
 			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -130,28 +125,26 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 			} catch (SQLException e) {
 				throw new RuntimeException(e.getMessage());
 			}
-		}
-		
-		
+		}	
 		return storico;
 	}
 
 	@Override
 	public ArrayList<Esito> findAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void update(Esito esito) {
-		
+	public void update(Esito esito) {	
 	}
 
 	@Override
 	public void delete(String url) {
+		
 		Connection connection = null;
 		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 			
 			PreparedStatement statement;
@@ -162,28 +155,28 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 	}
 	
 	@Override
 	public ArrayList<Video> getEsito(String email, int id_esito) {
+		
 		Connection connection = null;
 		Esito esito = new Esito();
+		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 			PreparedStatement statement;
 
 			String query = "SELECT *, v.id AS id_video FROM esiti e JOIN video v ON e.fk_video=v.url WHERE e.fk_utente = ? AND e.id = ? ORDER BY e.id";
 
-			
 			statement = connection.prepareStatement(query);
 			statement.setString(1, email);
 			statement.setInt(2, id_esito);
 			
 			ResultSet result = statement.executeQuery();
-			
 			
 			while(result.next()) {
 				
@@ -204,11 +197,7 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 				
 				esito.getVideo().add(video);
 				
-			}
-			
-			
-			
-			
+			}		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		} finally {
@@ -218,17 +207,16 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 				throw new RuntimeException(e.getMessage());
 			}
 		}
-		
-		
-		
-		return esito.getVideo();
-		
+		return esito.getVideo();	
 	}
 
 	@Override
 	public ArrayList<String> getRisposte(String email, String url, String valore) {
+		
 		Connection connection = null;
+		
 		ArrayList<String> risposte = new ArrayList<String>();
+		
 		try {
 			connection = DBManager.getInstance().getConnection();
 
@@ -242,12 +230,8 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 			ResultSet result = statement.executeQuery();
 
 			while(result.next()) {
-				
 				risposte.add(result.getString("risposta_utente"));
 			}
-			
-			
-			
 			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -258,15 +242,17 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 				throw new RuntimeException(e.getMessage());
 			}
 		}
-
 		return risposte;
 	}
 
 	@Override
 	public int getNumeroProvePerRisultato(String email, String risultato) {
+		
 		Connection connection = null;
 		int numeroProve = 0;
+		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 
 			String query = "SELECT COUNT(DISTINCT e.id), e.fk_utente FROM esiti e WHERE e.fk_utente=? AND e.risultato=? GROUP BY e.fk_utente";
@@ -289,8 +275,6 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 				throw new RuntimeException(e.getMessage());
 			}
 		}
-		
 		return numeroProve;
 	}
-
 }

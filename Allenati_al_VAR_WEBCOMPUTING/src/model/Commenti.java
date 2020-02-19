@@ -1,9 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Date;
-
-import persistence.DBManager;
 
 public class Commenti {
 

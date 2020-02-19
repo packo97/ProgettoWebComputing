@@ -15,10 +15,14 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 
 	@Override
 	public void save(Video video) {
+		
 		Connection connection = null;
+		
 		try {
 			connection = DBManager.getInstance().getConnection();
-			String insert = "insert into preferiti(fk_video, fk_utente) values (?,?)";
+			
+			String insert = "INSERT INTO preferiti(fk_video, fk_utente) VALUES (?,?)";
+			
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, video.getUrl());
 			statement.setString(2, DBManager.getInstance().getUtenteCorrente().getEmail());
@@ -37,9 +41,13 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 
 	@Override
 	public ArrayList<Video> findByPrimaryKey(String email) {
+		
 		Connection connection = null;
+		
 		ArrayList<Video> lista_video = new ArrayList<Video>();
+		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 			PreparedStatement statement;
 
@@ -48,6 +56,7 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 			statement = connection.prepareStatement(query);
 			statement.setString(1, email);
 			ResultSet result = statement.executeQuery();
+			
 			while (result.next()) {
 				Video video = new Video();
 				video.setId(result.getString("id"));				
@@ -76,21 +85,23 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 
 	@Override
 	public ArrayList<Video> findAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void update(Video preferiti) {
-		// TODO Auto-generated method stub
-		
+	public void update(Video preferiti) {	
 	}
 
 	public void delete(Video video) {
+		
 		Connection connection = null;
+		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
+			
 			String delete = "DELETE FROM preferiti WHERE fk_video = ? ";
+			
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setString(1, video.getUrl());
 
@@ -105,9 +116,7 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 			}
 		}
 	}
-	
-	//metodi di utilità
-	
+		
 	public Video getVideo(String url, String email) {
 		Connection connection = null;
 		Video video = null;
@@ -150,17 +159,15 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 		try {
 			connection = DBManager.getInstance().getConnection();
 			
-			PreparedStatement statement;
-			statement = connection.prepareStatement("DELETE FROM preferiti WHERE fk_video=?");
+			String delete = "DELETE FROM preferiti WHERE fk_video=?";
+			
+			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setString(1, url);
 
 			statement.executeUpdate();
 			
-			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}				
 	}
-
 }

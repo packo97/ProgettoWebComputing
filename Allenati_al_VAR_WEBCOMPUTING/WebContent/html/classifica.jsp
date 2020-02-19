@@ -15,7 +15,6 @@
 	<script type="text/javascript" src="../js/home.js"></script>
 	<script type="text/javascript" src="../js/risultatoRicerca.js"></script>
 
-	
 	<meta charset="UTF-8">
 	<title>ALLENATI AL VAR - Classifica</title>
 </head>
@@ -24,64 +23,66 @@
 	<%@include file="header_default.jsp" %>
 	
 	<div class="container">
-
-  			<div class="list-group">
-  				<div class="list-group-item">
-  					<div class="row">
-			    		<div class="column col-sm-1">
-   			    			<p>POSIZIONE</p>	                            	
-						</div>
-	   			    	<div class="column col-sm-4">                           	
-							<p>NOME</p>
-						</div>
-						<div class="column col-sm-4">                           	
-							<p>COGNOME</p>
-						</div>
-						<div class="column col-sm-2">
-	  			    		<p>PUNTEGGIO</p>
-						</div>
-							
+		<div class="list-group">
+			
+			<div class="list-group-item">
+				<div class="row">
+    				<div class="column col-sm-1">
+			    		<p>POSIZIONE</p>	                            	
+					</div>
+ 					<div class="column col-sm-4">                           	
+						<p>NOME</p>
+					</div>
+					<div class="column col-sm-4">                           	
+						<p>COGNOME</p>
+					</div>
+					<div class="column col-sm-2">
+					    <p>PUNTEGGIO</p>
 					</div>
 				</div>
- 			   		<c:set var = "cont" scope = "session" value ="${1}"/>
-  			    	<c:forEach items="${utenti}" var="u">
-  			    		<a href="gestorePagine?pagina=statistiche_utente&&utente=${u.email}" class="list-group-item list-group-item-action">
-	  			    		 <div class="row">
-	  			    			<div class="column col-sm-1">
-			   			    		<p>${cont}</p>	                            	
-								</div>
-			   			    	<div class="column col-sm-4">                           	
-									<p>${u.nome}</p>
-								</div>
-								<div class="column col-sm-4">                           	
-									<p>${u.cognome}</p>
-								</div>
-								<div class="column col-sm-2">
-		   			    			<p>${u.punteggio}</p>
-								</div>
-								<c:if test="${cont == 1}">
-									<div class="column col-sm-1">
-			   			    			<img src="../img/icona_primo.png">	                            	
-									</div>
-								</c:if>
-								<c:if test="${cont == 2}">
-									<div class="column col-sm-1">
-			   			    			<img src="../img/icona_secondo.png">	                            	
-									</div>
-								</c:if>
-								<c:if test="${cont == 3}">
-									<div class="column col-sm-1">
-			   			    			<img src="../img/icona_terzo.png">	                            	
-									</div>
-								</c:if>
+			</div>
+			
+	   		<c:set var = "cont" scope = "session" value ="${1}"/>
+	   		
+	    	<c:forEach items="${utenti}" var="u">
+	    		<a href="gestorePagine?pagina=statistiche_utente&&utente=${u.email}" class="list-group-item list-group-item-action">
+		    		<div class="row">
+		    			<div class="column col-sm-1">
+  			    			<p>${cont}</p>	                            	
+						</div>
+  			    		<div class="column col-sm-4">                           	
+							<p>${u.nome}</p>
+						</div>
+						<div class="column col-sm-4">                           	
+							<p>${u.cognome}</p>
+						</div>
+						<div class="column col-sm-2">
+		 			    	<p>${u.punteggio}</p>
+						</div>
+						
+						<c:if test="${cont == 1}">
+							<div class="column col-sm-1">
+		  			    		<img src="../img/icona_primo.png">	                            	
 							</div>
-						</a>
-						<c:set var = "cont" scope = "session" value ="${cont + 1}" />
-					</c:forEach>
+						</c:if>
+						
+						<c:if test="${cont == 2}">
+							<div class="column col-sm-1">
+		  			    		<img src="../img/icona_secondo.png">	                            	
+							</div>
+						</c:if>
+						
+						<c:if test="${cont == 3}">
+							<div class="column col-sm-1">
+		  			    		<img src="../img/icona_terzo.png">	                            	
+							</div>
+						</c:if>
+					</div>
+				</a>
 				
-
-  			</div>
-
+				<c:set var = "cont" scope = "session" value ="${cont + 1}" />
+			</c:forEach>
 		</div>
+	</div>
 </body>
 </html>

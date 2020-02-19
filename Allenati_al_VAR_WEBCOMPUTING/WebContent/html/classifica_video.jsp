@@ -20,18 +20,16 @@
 	<%@include file="header_default.jsp" %>
 	
 	<div class="container">
-	
-  			<div class="row">
-  			
-  				<div id="rigaButton" align="center" class="column col-sm-12">  					
-  					<button id="buttonGiusti" type="button" class="btn btn-outline-secondary">Più giusti</button>
-  					<button id="buttonSbagliati" type="button" class="btn btn-outline-secondary">Più sbagliati</button>
-  				</div>
-  			</div>
-  			<div class="row">
-  				<div id="classifica_video" class="column col-sm-12">
-  				</div>
-  			</div>
+		<div class="row">
+			<div id="rigaButton" align="center" class="column col-sm-12">  					
+				<button id="buttonGiusti" type="button" class="btn btn-outline-secondary">Più giusti</button>
+				<button id="buttonSbagliati" type="button" class="btn btn-outline-secondary">Più sbagliati</button>
+			</div>
+		</div>
+		<div class="row">
+			<div id="classifica_video" class="column col-sm-12">
+			</div>
+		</div>
   	</div>
 </body>
 </html>

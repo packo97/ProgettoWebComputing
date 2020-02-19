@@ -30,6 +30,4 @@ public class Commento {
 	public void setAutore(Utente autore) {
 		this.autore = autore;
 	}
-	
-	
 }

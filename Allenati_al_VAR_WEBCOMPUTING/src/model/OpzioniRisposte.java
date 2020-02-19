@@ -5,16 +5,14 @@ public class OpzioniRisposte {
 	private Long id;
 	private String opzioneCorretta;
 	private String opzioneErrata;
-	private Boolean rispostaUtente; //true se l'utente ha inserito la risposta corretta
+	private Boolean rispostaUtente;
 	
-	
-
 	public OpzioniRisposte(String opzioneCorretta, String opzioneErrata, Boolean rispostaUtente) {
-		
 		this.opzioneCorretta = opzioneCorretta;
 		this.opzioneErrata = opzioneErrata;
 		this.rispostaUtente = rispostaUtente;
 	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -38,6 +36,7 @@ public class OpzioniRisposte {
 	public String getOpzioneErrata() {
 		return opzioneErrata;
 	}
+	
 	public Boolean getRispostaUtente() {
 		return rispostaUtente;
 	}

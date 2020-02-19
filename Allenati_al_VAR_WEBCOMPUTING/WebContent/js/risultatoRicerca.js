@@ -18,15 +18,8 @@ $(document).ready(function(){
 		$("#buttonFiltro").remove();
 	if(window.location.href == "http://localhost:8080/ProgettoIngSW-WebComputing/html/gestorePagine?pagina=statistiche_utente")
 		$("#buttonFiltro").remove();
-	
 
-	
 });
-
-
-
-
-
 
 function mostraDurataMin(){
 	var slider = document.getElementById("durataMin");
@@ -63,17 +56,13 @@ function mostraFiltri(){
 		else
 			$('#rigaFiltri').load('filtri.jsp');
 	}
-		
-
 }
 
-function uncheckOtherButton1(){
-	
+function uncheckOtherButton1(){	
 	$("#piuSbagliati").prop("checked",false)
 }
 
 function uncheckOtherButton2(){
-
 	$("#piuGiusti").prop("checked",false)
 }
 
@@ -82,20 +71,12 @@ function cercaConFiltri(){
 
 	//////////////////CODICE CHE SERVE ALL'EDITOR PROVA AUTOVALUTAZIONE//////////////////////////////////
 	var array_tmp_prova_autovalutazione = [];
-	
-	  
-		$('#jumbotronDx').children('.div_video').children('.rowUp').children('iframe').each(function(){
-			
-			array_tmp_prova_autovalutazione.push($(this).attr("src"));			
-		});
+
+	$('#jumbotronDx').children('.div_video').children('.rowUp').children('iframe').each(function(){
+		array_tmp_prova_autovalutazione.push($(this).attr("src"));			
+	});
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	
-	
-	
-	
-	
-	
+
 	var filtri = {
 			azione : "filtri",
 			categoria : $("#categoria").val(),
@@ -109,12 +90,9 @@ function cercaConFiltri(){
 			piuGiusti : $("#piuGiusti").prop("checked"),
 			piuSbagliati : $("#piuSbagliati").prop("checked"),
 			numeroCommentiMin: $("#numeroCommentiMin").val(),
-			numeroCommentiMax: $("#numeroCommentiMax").val(),
-			
+			numeroCommentiMax: $("#numeroCommentiMax").val(),			
 			url_esclusi_ricerca : array_tmp_prova_autovalutazione,
-			
 	};
-	
 	
 	$.ajax({
 		type: "POST",
@@ -124,7 +102,6 @@ function cercaConFiltri(){
 		success: function(data){
 			var filtri = JSON.parse(data);
 			var risultato = filtri;
-			
 			
 			///////////////////////////////////RICERCA IN HOME E PAGINE RICERCA/////////////////////////////////////////////////////////////////////
 			if($('#jumboRicerca').length==0)
@@ -152,8 +129,7 @@ function cercaConFiltri(){
 			///////////////////////////////////RICERCA IN EDITOR PROVA AUTOVALUTAZIONE/////////////////////////////////////////////////////////////////////
 			$('#jumbotronSx').find(".div_video").remove();
 			for(r in risultato){		
-				
-				$('#jumbotronSx').children().children("#filtri_editor").append(	"<div class='div_video'>"+
+				$('#jumbotronSx').append("<div class='div_video'>"+
 												"<div class='rowUp'>"+
 													"<iframe src='"+risultato[r].url+"' selezionato='false'></iframe>"+
 												"</div>"+

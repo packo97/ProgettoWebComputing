@@ -14,7 +14,8 @@ import model.Video;
 import persistence.DBManager;
 
 public class Home extends HttpServlet {
-		@Override
+		
+	@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			
 			ArrayList<String> sezioni = new ArrayList<String>();
@@ -29,6 +30,7 @@ public class Home extends HttpServlet {
 			req.getSession().setAttribute("video_piu_visti",piu_visti);
 			List<Video> recenti = DBManager.getInstance().getUtenteCorrente().getRecenti();
 			req.getSession().setAttribute("video_recenti", recenti);
+			
 			RequestDispatcher rd = req.getRequestDispatcher("home.jsp");
 			rd.forward(req, resp);
 		}

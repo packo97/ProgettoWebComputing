@@ -17,12 +17,7 @@ $("document").ready(function(){
 			data: JSON.stringify(c),
 			success: function(data){
 				var c = JSON.parse(data);
-				
-				
-				if($(".list-group").children(".row").attr("url") == url_video)
-					$(".list-group").children(".row").parent().remove();
-			
-				
+				$(riga_cliccata).remove();		
 			}	
 		});	
 			  

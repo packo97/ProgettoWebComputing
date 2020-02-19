@@ -44,20 +44,13 @@ function changeColor2(){
 
 	
 }
-////////////////////////////
-
 
 function inserisciPreferiti(url){
-	
-	
 
-	
-	var dati = {
-			
+	var dati = {			
 			azione : "preferiti",
 			url_video : url
 	};
-	
 	
 	$.ajax({
 		type: "POST",
@@ -70,21 +63,16 @@ function inserisciPreferiti(url){
 				$('#addPreferiti').text('Rimuovi');
 			else
 				$('#addPreferiti').text('Preferiti');
-			
-			
-			
+
 			tempAlert(2000,c.isPreferito);
 		}	
 	});
 }
 
-function tempAlert(duration,pref)
-{
+function tempAlert(duration,pref){
 	
      var el = document.createElement("div");
-    
-    
-     
+
      if(pref == "true"){
     	
     	 el.className = "alert alert-success" ;
@@ -100,16 +88,8 @@ function tempAlert(duration,pref)
 	      el.parentNode.removeChild(el);
 	     },duration);
      
-     document.getElementById("colonnaSx").appendChild(el);
-     
-     
+     document.getElementById("colonnaSx").appendChild(el); 
 }
-
-
-
-
-
-/////////////////////////////////////
 
 function inserisciCommento(url){
 
@@ -122,14 +102,11 @@ function inserisciCommento(url){
 
 	$.ajax({
 		type: "POST",
-		//scriptCharset: "utf-8",
-		//contentType : 'application/json; charset=UTF-8',
 		url: "pagina_video",		
 		datatype : "json",
 		data: JSON.stringify(c),
 		success: function(data){
 			var c = JSON.parse(data);
-			alert(data);
 			$("#lista_commenti").append("<div class='container mt-3'>" +
 										"<div class='media border p-3'>" +
 											"<img id='img_referee' src='../img/referee.png' alt='referee' class='mr-3 mt-3 rounded-circle'> " +      
@@ -145,25 +122,14 @@ function inserisciCommento(url){
 		}	
 	});	
 }
-function decode_utf8( s ){
-    var t = unescape(s);
-    alert("ciao");
-    alert(t);
-    return t;
-}
-///////////////////////////////////
 
 function inserisciRisposta(url,risposta){
 	
-	
-
 	var c = {
 			azione : "risposta",
 			valore : risposta,
-			url_video : url
-			
+			url_video : url		
 	};
-
 
 	$.ajax({
 		type: "POST",

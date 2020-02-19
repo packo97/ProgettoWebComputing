@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-
 import persistence.DBManager;
 
 public class Video {
@@ -19,8 +18,8 @@ public class Video {
 	private String squadraB;
 	private int durata;
 
-
 	public Video(String id,String url, String nome, String descrizione, String difficolta, Categoria categoria, OpzioniRisposte risposte) {
+		
 		this.id = id;
 		this.url = url;
 		this.nome = nome;
@@ -31,7 +30,6 @@ public class Video {
 		this.categorie.add(categoria);
 		this.commenti = new Commenti();
 		this.risposte = risposte;
-		
 	}
 	
 	public Video() {
@@ -113,7 +111,6 @@ public class Video {
 		this.risposte = risposte;
 	}
 	
-
 	public Boolean isPreferito() {
 		return DBManager.getInstance().getUtenti().get(0).getPreferiti().contains(this);
 	}

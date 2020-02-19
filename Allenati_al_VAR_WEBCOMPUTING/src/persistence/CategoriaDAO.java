@@ -7,12 +7,10 @@ import model.Video;
 
 public interface CategoriaDAO {
 	
-
-	public void save(Video video);  // Create
-	public ArrayList<Video> findByPrimaryKey(String nome,String email);    // Retrieve
+	public void save(Video video);  
+	public ArrayList<Video> findByPrimaryKey(String nome,String email);   
 	public ArrayList<Video> findAll();       
-	public void update(Categoria categoria); //Update
-	public void delete(Video video); //Delete	
+	public void update(Categoria categoria);
+	public void delete(Video video); 
 	public void deleteUrlCategoria(String url);
-
 }

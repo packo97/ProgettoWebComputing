@@ -1,18 +1,12 @@
 package controller;
 
-
-
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import model.Utente;
-import model.Video;
 import persistence.DBManager;
 
 
@@ -27,7 +21,6 @@ public class Login extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
 		if (req.getParameter("login")!= null && req.getParameter("login").equals("true")) {
 
 			String email = req.getParameter("email");
@@ -35,14 +28,15 @@ public class Login extends HttpServlet{
 			Utente utente = DBManager.getInstance().login(email,password);
 
 			if (utente != null) {
+				
 				req.getSession().removeAttribute("loginSbagliato");
 				DBManager.getInstance().setUtenteCorrente(utente);
-				req.getSession().setAttribute("utente", utente);
-						
+				req.getSession().setAttribute("utente", utente);			
 				DBManager.getInstance().setUtenteCorrente(utente);
 				
 				req.getSession().setAttribute("amministratore", DBManager.getInstance().getUtenteCorrente().getAmministratore());
 				req.getSession().setAttribute("datiUtente", "Benvenuto/a " + utente.getNome() + " " + utente.getCognome());
+				
 				RequestDispatcher rd = req.getRequestDispatcher("/html/home");
 				rd.forward(req, resp);
 			}
@@ -109,12 +103,7 @@ public class Login extends HttpServlet{
 					RequestDispatcher rd = req.getRequestDispatcher("registrati.jsp");
 					rd.forward(req, resp);
 			}
-
-			
-			
 			req.getSession().removeAttribute("emailSbagliato");
-
-			
 		}
 	}
 }
