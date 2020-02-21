@@ -13,6 +13,7 @@ import model.Video;
 
 
 public class DBManager {
+	
 	private static DBManager instance = null;
 	private List<Utente> utenti;
 	private ArrayList<Video> video;
@@ -30,7 +31,8 @@ public class DBManager {
 	}
 	
 	public Connection getConnection() throws SQLException {
-		Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Allenati_Al_Var_WEBCOMPUTING", "postgres", "postgres");
+		Connection connection = DriverManager.getConnection("jdbc:postgresql://rajje.db.elephantsql.com:5432/zurfvxcg", "zurfvxcg", "EclVsDJMQ6vJCPrW3cfRwNtt_FJQfCi-");
+		//rajje.db.elephantsql.com zurfvxcg zurfvxcg, EclVsDJMQ6vJCPrW3cfRwNtt_FJQfCi-
 		return connection;
 	}
 	
@@ -53,7 +55,6 @@ public class DBManager {
 	}
 
 	public Utente login(String email, String password) {
-		
 		return getUtenteDAO().findByPrimaryKey(email,password);
 	}
 	
@@ -78,7 +79,7 @@ public class DBManager {
 	}
 	
 	public void aggiungiAiPreferiti(Video video) {
-		if(getPreferitiDAO().getVideo(video.getUrl(), utenteCorrente.getEmail())== null)
+		if(getPreferitiDAO().getVideo(video.getUrl(), utenteCorrente.getEmail()) == null)
 			getPreferitiDAO().save(video);
 		else
 			getPreferitiDAO().delete(video);
@@ -113,8 +114,7 @@ public class DBManager {
 		return utenti;
 	}
 
-	public void eliminaVideo(String url)
-	{
+	public void eliminaVideo(String url){
 		getVideoDAO().delete(url);
 	}
 
