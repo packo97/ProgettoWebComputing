@@ -49,7 +49,6 @@ public class GestorePagine extends HttpServlet {
 				GestoreProvaAutovalutazione.getVideo_selezionati().clear();
 				GestoreProvaAutovalutazione.getStati().clear();
 				GestoreProvaAutovalutazione.getStati().add(new ArrayList<Video>());
-				req.getSession().setAttribute("video", DBManager.getInstance().getVideoDAO().findAll());
 			}
 			else if(pagina.equals("classifica")){
 				ArrayList<Utente> utenti = DBManager.getInstance().getUtenteDAO().findAll();
