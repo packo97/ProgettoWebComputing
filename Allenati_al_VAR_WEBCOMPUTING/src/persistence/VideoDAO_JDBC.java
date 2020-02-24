@@ -7,14 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-
-
-
-
 import model.Categoria;
-import model.Commenti;
 import model.OpzioniRisposte;
 import model.Pair;
 import model.Video;
@@ -23,19 +16,16 @@ import model.Video;
 
 public class VideoDAO_JDBC implements VideoDAO{
 
-	
-
-	public final String query_findAll = "SELECT * FROM video v";
-
-	public final String query_risposta_corretta = "SELECT * FROM video WHERE url=?";
-	
-	
 	@Override
 	public Video findByPrimaryKey(String url) {
+		
 		Connection connection = null;
+		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 			Video video = new Video();
+			
 			String query = "SELECT * FROM video v WHERE v.url = ?";
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, url);
@@ -66,13 +56,16 @@ public class VideoDAO_JDBC implements VideoDAO{
 	
 	@Override
 	public ArrayList<Video> findAll() {
+		
 		Connection connection = null;
 		ArrayList<Video> lista_video = new ArrayList<Video>();
+		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 			Video video = null;
 			PreparedStatement statement;
-			
+			String query_findAll = "SELECT * FROM video v";
 			statement = connection.prepareStatement(query_findAll);
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
@@ -106,8 +99,11 @@ public class VideoDAO_JDBC implements VideoDAO{
 	
 	@Override
 	public void save(Video video) {
+		
 		Connection connection = null;
+		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 
 			String insert = "insert into video(id, url, nome, descrizione, difficolta, visualizzazioni,rispostaCorretta, rispostaErrata, categoria, durata, data, squadra_a, squadra_b) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -128,6 +124,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 			statement.setString(13, video.getSquadraB());
 			
 			statement.executeUpdate();
+			
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		} finally {
@@ -136,14 +133,16 @@ public class VideoDAO_JDBC implements VideoDAO{
 			} catch (SQLException e) {
 				throw new RuntimeException(e.getMessage());
 			}
-		}
-		
-	}
+		}	
+}
 	
 	@Override
 	public void update(Video video) {
+		
 		Connection connection = null;
+		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 
 			String insert = "UPDATE video SET nome=?, descrizione=?, difficolta=?, rispostacorretta=?, rispostaerrata=?, categoria=?, durata=?, squadra_a=?, squadra_b=? WHERE url=?";
@@ -171,7 +170,6 @@ public class VideoDAO_JDBC implements VideoDAO{
 				throw new RuntimeException(e.getMessage());
 			}
 		}
-
 	}
 	
 	@Override
@@ -179,6 +177,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 		Connection connection = null;
 		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 			
 			PreparedStatement statement;
@@ -187,18 +186,17 @@ public class VideoDAO_JDBC implements VideoDAO{
 
 			statement.executeUpdate();
 			
-			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-	}
+}
 
 	public boolean esisteVideo(String urlNuovo) {
+		
 		Connection connection = null;
 	
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 			
 			PreparedStatement statement;
@@ -211,17 +209,18 @@ public class VideoDAO_JDBC implements VideoDAO{
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		return false;
-	}
+}
 
 	public boolean esisteNome(String nomeNuovo) {
+		
 		Connection connection = null;
 		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 			
 			PreparedStatement statement;
@@ -235,15 +234,14 @@ public class VideoDAO_JDBC implements VideoDAO{
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return false;
-	}
+}
 
 	@Override
 	public boolean esisteNomeModifica(String modificaNome, String url) {
+		
 		Connection connection = null;
 		
 		try {
@@ -256,30 +254,31 @@ public class VideoDAO_JDBC implements VideoDAO{
 
 			ResultSet result = statement.executeQuery();
 			if(result.next()) {
-				System.out.println(result.getString("nome"));
 				return true;
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return false;
-	}
+}
 	
 	@Override
 	public String getRispostaCorretta(String url) {
 		
 		Connection connection = null;
+		
 		String risposta_corretta = null;
+		
 		try {
-			connection = DBManager.getInstance().getConnection();
-			PreparedStatement statement;
 			
-			statement = connection.prepareStatement(query_risposta_corretta);
+			connection = DBManager.getInstance().getConnection();
+			
+			String query_risposta_corretta = "SELECT * FROM video WHERE url=?";
+			PreparedStatement statement = connection.prepareStatement(query_risposta_corretta);
 			statement.setString(1, url);
 			ResultSet result = statement.executeQuery();
+			
 			if(result.next()){
 				risposta_corretta = result.getString("rispostaCorretta");
 			}
@@ -296,21 +295,28 @@ public class VideoDAO_JDBC implements VideoDAO{
 	}
 	
 	public int updateVisualizzazioni(String url) {
+		
 		Connection connection = null;
 		int visualizzazioni = 0;
+		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 			
 			String numeroVisualizzazioni = "SELECT visualizzazioni FROM video WHERE url = ?";
+			
 			PreparedStatement statementNumeroVisualizzazioni = connection.prepareStatement(numeroVisualizzazioni);
 			statementNumeroVisualizzazioni.setString(1, url);
+			
 			ResultSet resNumeroVisualizzazioni = statementNumeroVisualizzazioni.executeQuery();
+			
 			if(resNumeroVisualizzazioni.next()) {
 				visualizzazioni = resNumeroVisualizzazioni.getInt(1);
 			}
 			
 			String update = "UPDATE video SET visualizzazioni = ? WHERE url=?";
 			PreparedStatement statement = connection.prepareStatement(update);
+			
 			statement.setInt(1, ++visualizzazioni );
 			statement.setString(2, url);
 			
@@ -331,11 +337,12 @@ public class VideoDAO_JDBC implements VideoDAO{
 
 	@Override
 	public ArrayList<Video> getRicercaPerFiltri(String categoria, int durataMinima, int durataMassima, String periodo, String difficolta, String squadraA, String squadraB, String cercaIn, String piuGiusti, String piuSbagliati, int numeroCommentiMin, int numeroCommentiMax) {
+		
 		Connection connection = null;
-		
-		
 		ArrayList<Video> lista_video = new ArrayList<Video>();
+		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 			Video video = null;
 			
@@ -351,7 +358,6 @@ public class VideoDAO_JDBC implements VideoDAO{
 				}
 				else
 					filtri.add(new Pair("AND valore_risposta=?","true"));
-				
 			}
 			else if(piuSbagliati.equals("true")) {
 				query_ricerca_per_filtri = "SELECT COUNT(valore_risposta) AS numero_risposte_giuste, COUNT(commento) AS numero_commenti, v.url AS fk_video_risposte, v.nome FROM risposte_utente r LEFT OUTER JOIN video v ON v.url=r.fk_video LEFT OUTER JOIN commenti c ON v.url=c.fk_video WHERE durata BETWEEN ? AND ? ";
@@ -360,7 +366,6 @@ public class VideoDAO_JDBC implements VideoDAO{
 				}
 				else
 					filtri.add(new Pair("AND valore_risposta=?","false"));
-				
 			}
 			else if(cercaIn.equals("risposte_utente")) {
 				query_ricerca_per_filtri = "SELECT COUNT(valore_risposta) AS numero_risposte_giuste, COUNT(commento) AS numero_commenti, v.url AS fk_video_risposte, v.nome FROM video v LEFT OUTER JOIN commenti c ON v.url=c.fk_video JOIN risposte_utente r ON v.url=r.fk_video WHERE durata BETWEEN ? AND ?";
@@ -408,7 +413,6 @@ public class VideoDAO_JDBC implements VideoDAO{
 			if(!squadraB.equals("")) {
 				filtri.add(new Pair(" AND squadra_b = ?",squadraB));
 			}
-			
 			
 			if(piuGiusti.equals("true") || piuSbagliati.equals("true")) {
 				filtri.add(new Pair(" GROUP BY v.url HAVING COUNT(commento) BETWEEN " + numeroCommentiMin + " AND " + numeroCommentiMax + " ORDER BY numero_risposte_giuste DESC",""));
@@ -477,20 +481,19 @@ public class VideoDAO_JDBC implements VideoDAO{
 
 	@Override
 	public ArrayList<Video> findByName(String nome) {
+		
 		Connection connection = null;
 		ArrayList<Video> lista_video = new ArrayList<Video>();
 		
 		try {
-			connection = DBManager.getInstance().getConnection();
 			
+			connection = DBManager.getInstance().getConnection();
 			
 			String query = "SELECT * FROM video v WHERE UPPER(v.nome) LIKE UPPER(CONCAT('%', ?, '%'))";
 			
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, nome);
 		
-			
-			
 			ResultSet result = statement.executeQuery();
 			while(result.next()) {
 				Video video = new Video();
@@ -498,8 +501,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));			
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));				
-				
-				
+						
 				lista_video.add(video);
 			}
 		} catch (SQLException e) {
@@ -516,10 +518,13 @@ public class VideoDAO_JDBC implements VideoDAO{
 
 	@Override
 	public int getPunteggioForCategoria(String email, String categoria) {
+		
 		Connection connection = null;
 		int punteggio = 0;
 		int moltiplicatore = 1;
+		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 
 			String query = "SELECT * FROM video v JOIN esiti e ON v.url=e.fk_video WHERE e.fk_utente=? AND v.categoria=?";
@@ -542,19 +547,17 @@ public class VideoDAO_JDBC implements VideoDAO{
 						moltiplicatore = 3;
 					}
 					
-						
 					ArrayList<String> storicoRisposte = DBManager.getInstance().getEsitoDAO().getRisposte(email, result.getString("url"), "true");
 					
 					if(storicoRisposte.isEmpty())
 						punteggio+= 25 * moltiplicatore;
-					else if(storicoRisposte.size()<=10)
+					else if(storicoRisposte.size() <= 10)
 						punteggio+= 15 * moltiplicatore;
-					else if(storicoRisposte.size()<=50)
+					else if(storicoRisposte.size() <= 50)
 						punteggio+= 5 * moltiplicatore;
 					else
 						punteggio+= 0 * moltiplicatore;
 						
-
 				}
 				else if(result.getString("risposta_utente").equals("false")) {
 					
@@ -578,14 +581,8 @@ public class VideoDAO_JDBC implements VideoDAO{
 						punteggio-= 25 * moltiplicatore;
 					else
 						punteggio-= 50 * moltiplicatore;
-					
-				}
-				
-				
-			}
-			
-			
-			
+				}	
+			}	
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		}	 finally {
@@ -601,12 +598,15 @@ public class VideoDAO_JDBC implements VideoDAO{
 	
 	@Override
 	public ArrayList<Integer> getPunteggioForCategoriaAndMese(String email, String categoria) {
+		
 		Connection connection = null;
 		ArrayList<Integer> punteggiPerMese = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0,0,0,0,0,0,0,0));
 
 		int punteggio = 0;
 		int moltiplicatore = 1;
+		
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 
 			String query = "SELECT * FROM video v JOIN esiti e ON v.url=e.fk_video WHERE e.fk_utente=? AND v.categoria=?";
@@ -628,20 +628,17 @@ public class VideoDAO_JDBC implements VideoDAO{
 					else if(result.getString("difficolta").equals("DIFFICILE")) {
 						moltiplicatore = 3;
 					}
-					
 						
 					ArrayList<String> storicoRisposte = DBManager.getInstance().getEsitoDAO().getRisposte(email, result.getString("url"), "true");
 					
 					if(storicoRisposte.isEmpty())
 						punteggio+= 25 * moltiplicatore;
-					else if(storicoRisposte.size()<=10)
+					else if(storicoRisposte.size() <= 10)
 						punteggio+= 15 * moltiplicatore;
-					else if(storicoRisposte.size()<=50)
+					else if(storicoRisposte.size() <= 50)
 						punteggio+= 5 * moltiplicatore;
 					else
 						punteggio+= 0 * moltiplicatore;
-						
-
 				}
 				else if(result.getString("risposta_utente").equals("false")) {
 					
@@ -664,10 +661,8 @@ public class VideoDAO_JDBC implements VideoDAO{
 					else if(storicoRisposte.size()<=50)
 						punteggio-= 25 * moltiplicatore;
 					else
-						punteggio-= 50 * moltiplicatore;
-					
+						punteggio-= 50 * moltiplicatore;		
 				}
-				
 				
 				if(result.getString("data").charAt(5)=='0' && result.getString("data").charAt(6)=='1') {
 					punteggiPerMese.set(0, punteggiPerMese.get(0) + punteggio);
@@ -705,10 +700,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 				else if(result.getString("data").charAt(5)=='1' && result.getString("data").charAt(6)=='2') {
 					punteggiPerMese.set(0, punteggiPerMese.get(11) + punteggio);
 				}
-			}
-			
-			
-			
+			}		
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		}	 finally {
@@ -725,10 +717,12 @@ public class VideoDAO_JDBC implements VideoDAO{
 	
 	@Override
 	public ArrayList<Pair> getClassifica(String filtro) {
+		
 		Connection connection = null;
 		ArrayList<Pair> classifica_video = new ArrayList<Pair>();
 	
 		try {
+			
 			connection = DBManager.getInstance().getConnection();
 			
 			String query = "SELECT e.fk_video, COUNT(*) AS numero_risposte_corrette, v.id, v.url, v.nome, v.difficolta, v.categoria  FROM video v JOIN esiti e ON v.url=e.fk_video WHERE e.risposta_utente=? GROUP BY e.fk_video, v.id, v.url, v.nome, v.difficolta, v.categoria ORDER BY numero_risposte_corrette DESC";
@@ -744,7 +738,6 @@ public class VideoDAO_JDBC implements VideoDAO{
 				video.setDifficolta(result.getString("difficolta"));
 				video.setCategoria(new Categoria(result.getString("categoria")));
 				classifica_video.add(new Pair(video,result.getInt("numero_risposte_corrette")));
-				//System.out.println(result.getString(1) + "  " + result.getInt(2));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -757,5 +750,4 @@ public class VideoDAO_JDBC implements VideoDAO{
 		}
 		return classifica_video;
 	}
-
 }

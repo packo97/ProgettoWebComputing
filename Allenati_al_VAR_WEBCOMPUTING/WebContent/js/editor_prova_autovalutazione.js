@@ -258,9 +258,7 @@ function loadAtStart(){
 	  });
 	  
 	  $("#buttonStorico").off('click').click(function(){
-			 
-		  
-			
+
 			var c = {
 					azione : "mostraStorico",
 			};
@@ -331,9 +329,8 @@ function loadAtStart(){
 	  });
 	  
 	  $(".rigaEsito").off('click').click(function(e){
-			 
+		  
 		  	var id = $(this).attr("class").split(' ')[2];
-		  	
 			var c = {
 					azione : "mostra_video_esito",
 					id_esito : id,
@@ -376,8 +373,7 @@ function loadAtStart(){
 	  $(".buttonRipetiProva").off('click').click(function(e){
 			 
 		  var id = $(this).attr("class").split(' ')[1];
-		  
-			var c = {
+		  var c = {
 					azione : "ripeti_prova",
 					id_esito : id,
 					

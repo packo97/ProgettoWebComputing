@@ -46,6 +46,7 @@ public class CommentiDAO_JDBC implements CommentiDAO {
 	public Commenti findByPrimaryKey(String id) {
 		
 		Connection connection = null;
+		
 		Commenti commenti = new Commenti();
 		
 		try {

@@ -1,19 +1,13 @@
 package persistence;
 
-import java.sql.Array;
+
 import java.sql.Connection;
-import java.sql.Date;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import model.Categoria;
 import model.Esito;
-import model.OpzioniRisposte;
 import model.Video;
 
 public class EsitoDAO_JDBC implements EsitoDAO{
@@ -103,13 +97,7 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 				Video video = new Video();
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));
-				video.setDescrizione(result.getString("descrizione"));
-				video.setDifficolta(result.getString("difficolta"));
-				video.setVisualizzazioni(result.getInt("visualizzazioni"));
-				video.setCategoria(new Categoria(result.getString("categoria")));
-				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
-				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), result.getBoolean("risposta_utente")));
-				
+			
 				esito.getVideo().add(video);
 				
 				if(!storico.contains(esito)) {
@@ -188,13 +176,7 @@ public class EsitoDAO_JDBC implements EsitoDAO{
 				video.setId(result.getString("id_video"));
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));
-				video.setDescrizione(result.getString("descrizione"));
 				video.setDifficolta(result.getString("difficolta"));
-				video.setVisualizzazioni(result.getInt("visualizzazioni"));
-				video.setCategoria(new Categoria(result.getString("categoria")));
-				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
-				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), result.getBoolean("risposta_utente")));
-				
 				esito.getVideo().add(video);
 				
 			}		
