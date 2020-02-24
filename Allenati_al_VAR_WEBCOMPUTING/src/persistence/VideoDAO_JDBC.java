@@ -277,7 +277,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 			ResultSet result = statement.executeQuery();
 			
 			if(result.next()){
-				risposta_corretta = result.getString("rispostaCorretta");
+				risposta_corretta = result.getString("rispostacorretta");
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());

@@ -32,7 +32,7 @@ public class DBManager {
 	
 	public Connection getConnection() throws SQLException {
 		Connection connection = DriverManager.getConnection("jdbc:postgresql://rajje.db.elephantsql.com:5432/zurfvxcg", "zurfvxcg", "EclVsDJMQ6vJCPrW3cfRwNtt_FJQfCi-");
-		//rajje.db.elephantsql.com zurfvxcg zurfvxcg, EclVsDJMQ6vJCPrW3cfRwNtt_FJQfCi-
+		//Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Allenati_Al_Var_WEBCOMPUTING","postgres","postgres");
 		return connection;
 	}
 	
