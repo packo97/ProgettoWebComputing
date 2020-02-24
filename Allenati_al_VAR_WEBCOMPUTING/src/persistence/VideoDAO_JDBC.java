@@ -1,5 +1,6 @@
 package persistence;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -73,7 +74,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 				video.setId(result.getString("id"));				
 				video.setUrl(result.getString("url"));
 				video.setNome(result.getString("nome"));
-				video.setDescrizione(result.getString("descrizione"));
+				video.setDescrizione(new String(result.getString("descrizione").getBytes(),"UTF-8"));
 				video.setDifficolta(result.getString("difficolta"));
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
@@ -81,7 +82,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 				
 				lista_video.add(video);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | UnsupportedEncodingException e) {
 			throw new RuntimeException(e.getMessage());
 		}	 finally {
 			try {
@@ -102,7 +103,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 			
 			connection = DBManager.getInstance().getConnection();
 
-			String insert = "insert into video(id, url, nome, descrizione, difficolta, visualizzazioni,rispostaCorretta, rispostaErrata, categoria, durata, data, squadra_a, squadra_b) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String insert = "INSERT INTO video(id, url, nome, descrizione, difficolta, visualizzazioni,rispostaCorretta, rispostaErrata, categoria, durata, data, squadra_a, squadra_b) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, video.getId());
@@ -146,6 +147,7 @@ public class VideoDAO_JDBC implements VideoDAO{
 
 			
 			statement.setString(1, video.getNome());
+		
 			statement.setString(2, video.getDescrizione());
 			statement.setString(3, video.getDifficolta());
 			statement.setString(4, video.getRisposte().getOpzioneCorretta());
@@ -225,7 +227,6 @@ public class VideoDAO_JDBC implements VideoDAO{
 
 			ResultSet result = statement.executeQuery();
 			if(result.next()) {
-				System.out.println(result.getString("nome"));
 				return true;
 			}
 			

@@ -16,6 +16,11 @@
 	max-height: 700px;
 }
 
+#descrizione{
+	word-break: break-all;
+  	white-space: pre-line;
+}
+
 .column {
 	 margin-top:3%;
 }

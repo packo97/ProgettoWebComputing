@@ -138,7 +138,7 @@ public class PreferitiDAO_JDBC implements PreferitiDAO{
 				video.setVisualizzazioni(result.getInt("visualizzazioni"));
 				video.setRisposte(new OpzioniRisposte(result.getString("rispostaCorretta"), result.getString("rispostaErrata"), null));
 				video.setCategoria(new Categoria(result.getString("categoria")));
-				video.setCommenti(DBManager.getInstance().getCommentiDAO().findByPrimaryKey(result.getString("url")));
+
 				
 			}
 		} catch (SQLException e) {

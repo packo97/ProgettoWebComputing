@@ -52,6 +52,8 @@
 							<option value="FUORIGIOCO">FUORIGIOCO</option>					
 							<option value="FALLO DI MANO">FALLO DI MANO</option>
 							<option value="GOAL">GOAL</option>
+							<option value="DOGSO">DOGSO</option>
+							<option value="SPA">SPA</option>
 						</select>
 					</div>	
 					<div id="controlloCategoria" class="inactive">
