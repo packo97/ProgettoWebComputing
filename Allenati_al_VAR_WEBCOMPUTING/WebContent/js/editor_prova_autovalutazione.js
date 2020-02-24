@@ -331,7 +331,8 @@ function loadAtStart(){
 	  });
 	  
 	  $(".rigaEsito").off('click').click(function(e){
-			 
+			
+		  	var list_item = $(this).parent();
 		  	var id = $(this).attr("class").split(' ')[2];
 		  	
 			var c = {
@@ -348,13 +349,13 @@ function loadAtStart(){
 				success: function(data){
 					var video = JSON.parse(data);
 					
-					if($("ul[id='lista_esiti']").children().eq(id-1).children(".rigaVideoEsito").length>0){
-						$("ul[id='lista_esiti']").children().eq(id-1).children(".rigaVideoEsito").remove();
+					if($(list_item).children(".rigaVideoEsito").length>0){
+						$(list_item).children(".rigaVideoEsito").remove();
 						return;
 					}
 					
 					for(v in video){
-						$("ul[id='lista_esiti']").children().eq(id-1).append("<div class='rigaVideoEsito row badge badge-light' selezionato='false' url='" + video[v].url + "'>"+
+						$(list_item).append("<div class='rigaVideoEsito row badge badge-light' selezionato='false' url='" + video[v].url + "'>"+
 													"<div class='column col-sm-6'>"+
 														"<p>"+ video[v].nome +"</p>"+	
 													"</div>"+
