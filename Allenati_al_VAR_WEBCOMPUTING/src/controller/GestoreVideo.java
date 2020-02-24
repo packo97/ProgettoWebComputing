@@ -49,7 +49,7 @@ public class GestoreVideo extends HttpServlet {
 			
 			String link = req.getParameter("link");
 			String nome = req.getParameter("nome");
-			String descrizione = req.getParameter("desc");
+			String descrizione = new String(req.getParameter("desc").getBytes(), "UTF-8");
 			String difficolta = req.getParameter("diff");
 			String categoria = req.getParameter("cat");
 			String opzioneCorretta = req.getParameter("opC");
@@ -126,7 +126,7 @@ public class GestoreVideo extends HttpServlet {
 		{	
 			String link = req.getParameter("link");
 			String nome = req.getParameter("nome");
-			String descrizione = req.getParameter("desc");
+			String descrizione = new String(req.getParameter("desc").getBytes(), "UTF-8");
 			String difficolta = req.getParameter("diff");
 			String categoria = req.getParameter("cat");
 			String opzioneCorretta = req.getParameter("opC");
@@ -134,6 +134,7 @@ public class GestoreVideo extends HttpServlet {
 			int durata = Integer.parseInt(req.getParameter("durata"));
 			String squadraA = req.getParameter("squadraA").toUpperCase();
 			String squadraB = req.getParameter("squadraB").toUpperCase();
+			
 			
 			Video v = new Video(link.substring(30), link, nome, descrizione, difficolta, new Categoria(categoria), new OpzioniRisposte(opzioneCorretta, opzioneErrata,false));
 			
