@@ -119,12 +119,16 @@
 						<p class="badge badge-dark column col-sm-9" id="nome_video"> ${nome}</p>	
 						<p class="badge badge-light column col-sm-3" id="visualizzazioni"> ${visualizzazioni} visualizzazioni</p>		
 					</div>	 
-					<p class="badge badge-light column col-sm-12" id="descrizione"> ${descrizione}</p>
-					<br>
-					<p class="badge badge-light column col-sm-12" id="categoria"> Categoria: ${categoria} </p>
-					<br>
-					<p class="badge badge-light column col-sm-12"id="difficolta"> ${difficolta} </p>
-					<br>		
+					<div class="row">
+						<p class="badge badge-light column col-sm-12" id="descrizione"> ${descrizione}</p>
+					</div>
+					<div id="primaRiga" class="row">
+						<p class="badge badge-light column col-sm-12" id="categoria"> Categoria: ${categoria} </p>
+					</div>
+					<div id="primaRiga" class="row">
+						<p class="badge badge-light column col-sm-12"id="difficolta"> ${difficolta} </p>
+					</div>
+					
 				</div>
 			</div>
 		
